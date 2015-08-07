@@ -1,9 +1,148 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Event">
-        <attribute name="timeStamp" optional="YES" attributeType="Date"/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Artist" representedClassName="Artist" syncable="YES">
+        <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="attributes" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="ArtistAttributes" syncable="YES"/>
+    </entity>
+    <entity name="ArtistAttributes" representedClassName="ArtistAttributes" syncable="YES">
+        <attribute name="href" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Author" representedClassName="Author" syncable="YES">
+        <relationship name="name" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Name" syncable="YES"/>
+        <relationship name="uri" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Uri" syncable="YES"/>
+    </entity>
+    <entity name="Categary" representedClassName="Categary" syncable="YES">
+        <relationship name="attributes" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CategoryAttributes" syncable="YES"/>
+    </entity>
+    <entity name="CategoryAttributes" representedClassName="CategoryAttributes" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="scheme" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="term" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ContentType" representedClassName="ContentType" syncable="YES">
+        <relationship name="attributes" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="ContentTypeAttributes" syncable="YES"/>
+    </entity>
+    <entity name="ContentTypeAttributes" representedClassName="ContentTypeAttributes" syncable="YES">
+        <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="term" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Entry" representedClassName="Entry" syncable="YES">
+        <relationship name="artist" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Artist" syncable="YES"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Categary" syncable="YES"/>
+        <relationship name="contentType" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="ContentType" syncable="YES"/>
+        <relationship name="id" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Id" syncable="YES"/>
+        <relationship name="image" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Image" syncable="YES"/>
+        <relationship name="link" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Link" syncable="YES"/>
+        <relationship name="name" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Name" syncable="YES"/>
+        <relationship name="price" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Price" syncable="YES"/>
+        <relationship name="releaseDate" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="ReleaseDate" syncable="YES"/>
+        <relationship name="rights" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Rights" syncable="YES"/>
+        <relationship name="summary" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Summary" syncable="YES"/>
+        <relationship name="title" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Title" syncable="YES"/>
+    </entity>
+    <entity name="Event" representedClassName="Event">
+        <attribute name="timeStamp" optional="YES" attributeType="Date">
+            <userInfo/>
+        </attribute>
+        <userInfo/>
+    </entity>
+    <entity name="Feed" representedClassName="Feed" syncable="YES">
+        <relationship name="author" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Author" syncable="YES"/>
+        <relationship name="entry" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Entry" syncable="YES"/>
+        <relationship name="icon" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Icon" syncable="YES"/>
+        <relationship name="id" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Id" syncable="YES"/>
+        <relationship name="link" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Link" syncable="YES"/>
+        <relationship name="rights" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Rights" syncable="YES"/>
+        <relationship name="title" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Title" syncable="YES"/>
+        <relationship name="updated" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Updated" syncable="YES"/>
+    </entity>
+    <entity name="Icon" representedClassName="Icon" syncable="YES">
+        <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Id" representedClassName="Id" syncable="YES">
+        <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="attributes" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="IdAttributes" syncable="YES"/>
+    </entity>
+    <entity name="IdAttributes" representedClassName="IdAttributes" syncable="YES">
+        <attribute name="bundleId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Image" representedClassName="Image" syncable="YES">
+        <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="attributes" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="ImageAttributes" syncable="YES"/>
+    </entity>
+    <entity name="ImageAttributes" representedClassName="ImageAttributes" syncable="YES">
+        <attribute name="height" optional="YES" attributeType="Integer 32" defaultValueString="0.0" syncable="YES"/>
+    </entity>
+    <entity name="Link" representedClassName="Link" syncable="YES">
+        <relationship name="attributes" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="LinkAttributes" syncable="YES"/>
+    </entity>
+    <entity name="LinkAttributes" representedClassName="LinkAttributes" syncable="YES">
+        <attribute name="href" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Name" representedClassName="Name" syncable="YES">
+        <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Price" representedClassName="Price" syncable="YES">
+        <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="attributes" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="PriceAttributes" syncable="YES"/>
+    </entity>
+    <entity name="PriceAttributes" representedClassName="PriceAttributes" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="currency" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ReleaseDate" representedClassName="ReleaseDate" syncable="YES">
+        <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="attributes" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ReleaseDateAttributes" syncable="YES"/>
+    </entity>
+    <entity name="ReleaseDateAttributes" representedClassName="ReleaseDateAttributes" syncable="YES">
+        <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Rights" representedClassName="Rights" syncable="YES">
+        <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Summary" representedClassName="Summary" syncable="YES">
+        <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Title" representedClassName="Title" syncable="YES">
+        <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Updated" representedClassName="Updated" syncable="YES">
+        <attribute name="label" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
+    <entity name="Uri" representedClassName="Uri" syncable="YES">
+        <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Event" positionX="261" positionY="189" width="128" height="60"/>
+        <element name="Event" positionX="-297" positionY="-459" width="128" height="58"/>
+        <element name="Updated" positionX="52" positionY="-27" width="128" height="58"/>
+        <element name="Entry" positionX="-155" positionY="-376" width="128" height="223"/>
+        <element name="Author" positionX="-11" positionY="-460" width="128" height="73"/>
+        <element name="Icon" positionX="-288" positionY="-189" width="128" height="58"/>
+        <element name="Rights" positionX="333" positionY="-189" width="128" height="58"/>
+        <element name="Title" positionX="268" positionY="-54" width="128" height="58"/>
+        <element name="Feed" positionX="162" positionY="-306" width="128" height="163"/>
+        <element name="Link" positionX="315" positionY="-288" width="128" height="58"/>
+        <element name="Id" positionX="-54" positionY="-144" width="128" height="73"/>
+        <element name="Name" positionX="268" positionY="-562" width="128" height="58"/>
+        <element name="Uri" positionX="133" positionY="-562" width="128" height="58"/>
+        <element name="LinkAttributes" positionX="295" positionY="-432" width="128" height="88"/>
+        <element name="Image" positionX="-153" positionY="-522" width="128" height="73"/>
+        <element name="ImageAttributes" positionX="-9" positionY="-549" width="128" height="58"/>
+        <element name="Summary" positionX="-180" positionY="-585" width="128" height="58"/>
+        <element name="Price" positionX="-207" positionY="-63" width="128" height="73"/>
+        <element name="PriceAttributes" positionX="-72" positionY="-54" width="128" height="73"/>
+        <element name="ContentType" positionX="-191" positionY="45" width="128" height="58"/>
+        <element name="ContentTypeAttributes" positionX="-45" positionY="54" width="128" height="73"/>
+        <element name="IdAttributes" positionX="180" positionY="81" width="128" height="73"/>
+        <element name="Artist" positionX="306" positionY="20" width="128" height="73"/>
+        <element name="ArtistAttributes" positionX="351" positionY="126" width="128" height="58"/>
+        <element name="Categary" positionX="-279" positionY="149" width="128" height="58"/>
+        <element name="CategoryAttributes" positionX="-38" positionY="189" width="128" height="103"/>
+        <element name="ReleaseDate" positionX="79" positionY="182" width="128" height="73"/>
+        <element name="ReleaseDateAttributes" positionX="268" positionY="191" width="128" height="58"/>
     </elements>
 </model>
