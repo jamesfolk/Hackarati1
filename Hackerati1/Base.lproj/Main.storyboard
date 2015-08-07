@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Master-->
@@ -32,22 +33,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qjN-Wi-RIh">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qjN-Wi-RIh">
                                 <rect key="frame" x="20" y="72" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="9xF-p8-WSP"/>
+                                    <constraint firstAttribute="width" constant="128" id="eT0-Mv-lyM"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="auY-Q1-fhJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="auY-Q1-fhJ">
                                 <rect key="frame" x="156" y="98" width="424" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4oP-rN-CXC">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4oP-rN-CXC">
                                 <rect key="frame" x="156" y="152" width="424" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lPH-vl-Vqp">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lPH-vl-Vqp">
                                 <rect key="frame" x="20" y="208" width="560" height="372"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -56,6 +61,22 @@
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qjN-Wi-RIh" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" constant="8" id="Bgz-sE-too"/>
+                            <constraint firstItem="4oP-rN-CXC" firstAttribute="top" secondItem="auY-Q1-fhJ" secondAttribute="bottom" constant="33" id="Bmk-5v-Zbc"/>
+                            <constraint firstItem="lPH-vl-Vqp" firstAttribute="top" secondItem="qjN-Wi-RIh" secondAttribute="bottom" constant="8" id="IPc-vI-BYt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lPH-vl-Vqp" secondAttribute="trailing" constant="4" id="Ivp-CM-5Mi"/>
+                            <constraint firstItem="auY-Q1-fhJ" firstAttribute="leading" secondItem="qjN-Wi-RIh" secondAttribute="trailing" constant="8" id="LyW-7T-Md8"/>
+                            <constraint firstItem="auY-Q1-fhJ" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" constant="34" id="WbU-bb-NL4"/>
+                            <constraint firstItem="GAO-Cl-Wes" firstAttribute="top" secondItem="lPH-vl-Vqp" secondAttribute="bottom" constant="20" id="X9V-Nl-nw1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="auY-Q1-fhJ" secondAttribute="trailing" constant="4" id="YB3-63-PjD"/>
+                            <constraint firstItem="4oP-rN-CXC" firstAttribute="top" secondItem="auY-Q1-fhJ" secondAttribute="bottom" constant="33" id="ZJb-zT-XvN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4oP-rN-CXC" secondAttribute="trailing" constant="4" id="ahV-vQ-kbf"/>
+                            <constraint firstItem="qjN-Wi-RIh" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" constant="4" id="b7w-Pm-O2t"/>
+                            <constraint firstItem="4oP-rN-CXC" firstAttribute="leading" secondItem="qjN-Wi-RIh" secondAttribute="trailing" constant="8" id="moa-Ws-tqa"/>
+                            <constraint firstItem="lPH-vl-Vqp" firstAttribute="top" secondItem="4oP-rN-CXC" secondAttribute="bottom" constant="35" id="nST-ed-Waw"/>
+                            <constraint firstItem="lPH-vl-Vqp" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" constant="4" id="sFP-Wo-rHO"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM">
