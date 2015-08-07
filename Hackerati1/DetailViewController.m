@@ -12,11 +12,19 @@
 #import "Id.h"
 #import "Image.h"
 #import "ImageAttributes.h"
+#import "Name.h"
+#import "Rights.h"
 
 @interface DetailViewController ()
 
 @property (strong, nonatomic) UIPopoverController *activityPopover;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *shareButton;
+
+@property (weak, nonatomic) IBOutlet UIImageView *entryUIImageView;
+
+@property (weak, nonatomic) IBOutlet UILabel *entryTitle;
+@property (weak, nonatomic) IBOutlet UILabel *entryPrice;
+@property (weak, nonatomic) IBOutlet UITextView *entrySummary;
 
 @end
 
@@ -40,6 +48,18 @@
         Title *title = [_detailItem title];
         self.title = [title label];
         self.detailDescriptionLabel.text = [[_detailItem summary] label];
+        NSSet *images = [_detailItem image];
+        
+        self.entryUIImageView.image = [self getLargestImage];
+        
+        Name *name = [_detailItem name];
+        self.entryTitle.text = [name label];
+        
+        Rights *rights = [_detailItem rights];
+        self.entryPrice.text = [rights label];
+        
+        Summary *summary = [_detailItem summary];
+        self.entrySummary.text = [summary label];
     }
 }
 
@@ -54,17 +74,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)share:(id)sender
+- (UIImage*)getLargestImage
 {
-    NSString *title = [[self.detailItem title] label];
-    NSString *summary = [[self.detailItem summary] label];
-    BOOL isFavorite = [[self.detailItem favorite] boolValue];
-    NSString *favoriteString = @"";
-    if(isFavorite)
-        favoriteString = @"**One of my favorites**\n\n";
-    
-    NSString *text = [[NSString alloc] initWithFormat:@"%@\n%@\n\n%@\n\n", favoriteString, title, summary];
-    NSURL *url = [NSURL URLWithString:[[self.detailItem id] label]];
     NSNumber *largestNumber = [NSNumber numberWithInt:0];
     NSSet *images = [self.detailItem image];
     NSData *data = nil;
@@ -78,11 +89,31 @@
             data = [[img attributes] uiimage];
         }
     }
-    UIActivityViewController *controller = nil;
     
     if (data)
     {
         image = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    }
+    
+    return image;
+}
+                                    
+- (IBAction)share:(id)sender
+{
+    NSString *title = [[self.detailItem title] label];
+    NSString *summary = [[self.detailItem summary] label];
+    BOOL isFavorite = [[self.detailItem favorite] boolValue];
+    NSString *favoriteString = @"";
+    if(isFavorite)
+        favoriteString = @"**One of my favorites**\n\n";
+    
+    NSString *text = [[NSString alloc] initWithFormat:@"%@\n%@\n\n%@\n\n", favoriteString, title, summary];
+    NSURL *url = [NSURL URLWithString:[[self.detailItem id] label]];
+    UIImage *image = [self getLargestImage];
+    UIActivityViewController *controller = nil;
+    
+    if (image)
+    {
         controller =
         [[UIActivityViewController alloc]
          initWithActivityItems:@[image, text, url]
