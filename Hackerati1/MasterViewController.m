@@ -38,6 +38,8 @@
 
 @interface MasterViewController ()
 
+@property (strong, nonatomic) Feed *currentFeed;
+
 @end
 
 @implementation MasterViewController
@@ -276,16 +278,19 @@
     
     Author *authorObject = [NSEntityDescription insertNewObjectForEntityForName:@"Author" inManagedObjectContext:self.managedObjectContext];
     
-    Name *name = [NSEntityDescription insertNewObjectForEntityForName:@"Name" inManagedObjectContext:self.managedObjectContext];
-    id temp = [self getValue:author key:@"name"];
-    name.label = [[NSString alloc] initWithString:[self getValue:temp key:@"label"]];
+    Name *nameObject = [NSEntityDescription insertNewObjectForEntityForName:@"Name" inManagedObjectContext:self.managedObjectContext];
+    id name = [self getValue:author key:@"name"];
+    NSString *label = [self getValue:name key:@"label"];
+    [nameObject setLabel:[[NSString alloc] initWithString:label]];
     
-    Uri *uri = [NSEntityDescription insertNewObjectForEntityForName:@"Uri" inManagedObjectContext:self.managedObjectContext];
-    temp = [self getValue:author key:@"uri"];
-    uri.label = [[NSString alloc] initWithString:[self getValue:temp key:@"label"]];
     
-    authorObject.name = name;
-    authorObject.uri = uri;
+    Uri *uriObject = [NSEntityDescription insertNewObjectForEntityForName:@"Uri" inManagedObjectContext:self.managedObjectContext];
+    id uri = [self getValue:author key:@"uri"];
+    label = [self getValue:uri key:@"label"];
+    [uriObject setLabel:[[NSString alloc] initWithString:label]];
+    
+    [authorObject setName:nameObject];
+    [authorObject setUri:uriObject];
     
     return authorObject;
 }
@@ -302,12 +307,14 @@
     {
         Entry *entryObject = [NSEntityDescription insertNewObjectForEntityForName:@"Entry" inManagedObjectContext:self.managedObjectContext];
         
-        
-        Name *name = [NSEntityDescription insertNewObjectForEntityForName:@"Name" inManagedObjectContext:self.managedObjectContext];
+#pragma mark build Entry:name
+        Name *nameObject = [NSEntityDescription insertNewObjectForEntityForName:@"Name" inManagedObjectContext:self.managedObjectContext];
         temp = [self getValue:aEntry key:@"im:name"];
-        name.label = [self getValue:temp key:@"label"];
-        entryObject.name = name;
+        NSString *label = [self getValue:temp key:@"label"];
+        [nameObject setLabel:[[NSString alloc] initWithString:label]];
+        [entryObject setName:nameObject];
         
+#pragma mark build Entry:image
         id images = [self getValue:aEntry key:@"im:image"];
         capacity = [temp count];
         NSMutableSet *imageSet = [[NSMutableSet alloc] initWithCapacity:capacity];
@@ -316,105 +323,207 @@
         for (NSDictionary *img in images)
         {
             Image *imageObject = [NSEntityDescription insertNewObjectForEntityForName:@"Image" inManagedObjectContext:self.managedObjectContext];
-            imageObject.label = [self getValue:img key:@"label"];
+            label = [self getValue:img key:@"label"];
+            [imageObject setLabel:[[NSString alloc] initWithString:label]];
             
             ImageAttributes *imageAttributesObject = [NSEntityDescription insertNewObjectForEntityForName:@"ImageAttributes" inManagedObjectContext:self.managedObjectContext];
-            temp = [self getValue:img key:@"attributes"];
-            NSString *height = [self getValue:temp key:@"height"];
-            imageAttributesObject.height = [f numberFromString:height];
+            id attributes = [self getValue:img key:@"attributes"];
             
-            imageObject.attributes = imageAttributesObject;
+            if(nil != (temp = [attributes objectForKey:@"height"]))
+            {
+                NSString *height = [self getValue:attributes key:@"height"];
+                [imageAttributesObject setHeight:[f numberFromString:height]];
+            }
+            [imageObject setAttributes:imageAttributesObject];
             
             [imageSet addObject:imageObject];
         }
-        entryObject.image = imageSet;
+        [entryObject setImage:imageSet];
         
+#pragma mark build Entry:summary
         Summary *summaryObject = [NSEntityDescription insertNewObjectForEntityForName:@"Summary" inManagedObjectContext:self.managedObjectContext];
         temp = [self getValue:aEntry key:@"summary"];
-        summaryObject.label = [self getValue:temp key:@"label"];
-        entryObject.summary = summaryObject;
+        label = [self getValue:temp key:@"label"];
+        [summaryObject setLabel:[[NSString alloc] initWithString:label]];
+        [entryObject setSummary:summaryObject];
         
+#pragma mark build Entry:price
         Price *priceObject = [NSEntityDescription insertNewObjectForEntityForName:@"Price" inManagedObjectContext:self.managedObjectContext];
         temp = [self getValue:aEntry key:@"im:price"];
-        priceObject.label = [self getValue:temp key:@"label"];
+        label = [self getValue:temp key:@"label"];
+        [priceObject setLabel:[[NSString alloc] initWithString:label]];
         
         PriceAttributes *priceAttributesObject = [NSEntityDescription insertNewObjectForEntityForName:@"PriceAttributes" inManagedObjectContext:self.managedObjectContext];
-        temp = [self getValue:temp key:@"attributes"];
-        NSString *amount = [self getValue:temp key:@"amount"];
-        priceAttributesObject.amount = [f numberFromString:amount];
-        priceAttributesObject.currency = [self getValue:temp key:@"currency"];
-        priceObject.attributes = priceAttributesObject;
-        entryObject.price = priceObject;
+        id attributes = [self getValue:temp key:@"attributes"];
         
+        if(nil != (temp = [attributes objectForKey:@"amount"]))
+        {
+            NSString *amount = [self getValue:attributes key:@"amount"];
+            [priceAttributesObject setAmount:[f numberFromString:amount]];
+        }
+        
+        if(nil != (temp = [attributes objectForKey:@"currency"]))
+        {
+            NSString *currency = [self getValue:attributes key:@"currency"];
+            [priceAttributesObject setCurrency:[[NSString alloc] initWithString:currency]];
+        }
+        [priceObject setAttributes:priceAttributesObject];
+        [entryObject setPrice:priceObject];
+        
+#pragma mark build Entry:contentType
         ContentType *contentTypeObject = [NSEntityDescription insertNewObjectForEntityForName:@"ContentType" inManagedObjectContext:self.managedObjectContext];
         ContentTypeAttributes *contentTypeAttributes = [NSEntityDescription insertNewObjectForEntityForName:@"ContentTypeAttributes" inManagedObjectContext:self.managedObjectContext];
         temp = [self getValue:aEntry key:@"im:contentType"];
-        temp = [self getValue:temp key:@"attributes"];
-        contentTypeAttributes.term = [self getValue:temp key:@"term"];
-        contentTypeAttributes.label = [self getValue:temp key:@"label"];
-        contentTypeObject.attributes = contentTypeAttributes;
-        entryObject.contentType = contentTypeObject;
+        attributes = [self getValue:temp key:@"attributes"];
+        if(nil != (temp = [attributes objectForKey:@"term"]))
+        {
+            NSString *term = [self getValue:attributes key:@"term"];
+            [contentTypeAttributes setTerm:[[NSString alloc] initWithString:term]];
+        }
+        if(nil != (temp = [attributes objectForKey:@"label"]))
+        {
+            NSString *label = [self getValue:attributes key:@"label"];
+            [contentTypeAttributes setLabel:[[NSString alloc] initWithString:label]];
+        }
+        [contentTypeObject setAttributes:contentTypeAttributes];
+        [entryObject setContentType:contentTypeObject];
         
+#pragma mark build Entry:rights
         Rights *rightsObject = [NSEntityDescription insertNewObjectForEntityForName:@"Rights" inManagedObjectContext:self.managedObjectContext];
-        temp = [self getValue:aEntry key:@"rights"];
-        rightsObject.label = [self getValue:temp key:@"label"];
-        entryObject.rights = rightsObject;
         
+        temp = [self getValue:aEntry key:@"rights"];
+        label = [self getValue:temp key:@"label"];
+        [rightsObject setLabel:[[NSString alloc] initWithString:label]];
+        [entryObject setRights:rightsObject];
+        
+#pragma mark build Entry:title
         Title *titleObject = [NSEntityDescription insertNewObjectForEntityForName:@"Title" inManagedObjectContext:self.managedObjectContext];
         temp = [self getValue:aEntry key:@"title"];
-        titleObject.label = [self getValue:temp key:@"label"];
-        entryObject.title = titleObject;
+        label = [self getValue:temp key:@"label"];
+        [titleObject setLabel:[[NSString alloc] initWithString:label]];
+        [entryObject setTitle:titleObject];
         
-        
+#pragma mark build Entry:link
         Link *linkObject = [NSEntityDescription insertNewObjectForEntityForName:@"Link" inManagedObjectContext:self.managedObjectContext];
         temp = [self getValue:aEntry key:@"link"];
-        temp = [self getValue:temp key:@"attributes"];
+        attributes = [self getValue:temp key:@"attributes"];
         LinkAttributes *linkAttributesObject = [NSEntityDescription insertNewObjectForEntityForName:@"LinkAttributes" inManagedObjectContext:self.managedObjectContext];
-        linkAttributesObject.rel = [self getValue:temp key:@"rel"];
-        linkAttributesObject.type = [self getValue:temp key:@"type"];
-        linkAttributesObject.href = [self getValue:temp key:@"href"];
-        linkObject.attributes = linkAttributesObject;
-        entryObject.link = linkObject;
         
+        if(nil != (temp = [attributes objectForKey:@"rel"]))
+        {
+            NSString *rel = [self getValue:attributes key:@"rel"];
+            [linkAttributesObject setRel:[[NSString alloc] initWithString:rel]];
+        }
+        
+        if(nil != (temp = [attributes objectForKey:@"type"]))
+        {
+            NSString *type = [self getValue:attributes key:@"type"];
+            [linkAttributesObject setType:[[NSString alloc] initWithString:type]];
+        }
+        
+        if(nil != (temp = [attributes objectForKey:@"href"]))
+        {
+            NSString *href = [self getValue:attributes key:@"href"];
+            [linkAttributesObject setHref:[[NSString alloc] initWithString:href]];
+        }
+        
+        [linkObject setAttributes:linkAttributesObject];
+        [entryObject setLink:linkObject];
+        
+#pragma mark build Entry:id
         Id *idObject = [NSEntityDescription insertNewObjectForEntityForName:@"Id" inManagedObjectContext:self.managedObjectContext];
         temp = [self getValue:aEntry key:@"id"];
-        idObject.label = [self getValue:temp key:@"label"];
-        IdAttributes *idAttributesObject = [NSEntityDescription insertNewObjectForEntityForName:@"IdAttributes" inManagedObjectContext:self.managedObjectContext];
-        temp = [self getValue:temp key:@"attributes"];
-        idAttributesObject.id = [self getValue:temp key:@"im:id"];
-        idAttributesObject.bundleId = [self getValue:temp key:@"im:bundleId"];
-        idObject.attributes = idAttributesObject;
-        entryObject.id = idObject;
+        label = [self getValue:temp key:@"label"];
+        [idObject setLabel:[[NSString alloc] initWithString:label]];
         
+        IdAttributes *idAttributesObject = [NSEntityDescription insertNewObjectForEntityForName:@"IdAttributes" inManagedObjectContext:self.managedObjectContext];
+        attributes = [self getValue:temp key:@"attributes"];
+        
+        if(nil != (temp = [attributes objectForKey:@"im:id"]))
+        {
+            NSString *_id = [self getValue:attributes key:@"im:id"];
+            [idAttributesObject setId:[[NSString alloc] initWithString:_id]];
+        }
+        
+        if(nil != (temp = [attributes objectForKey:@"type"]))
+        {
+            NSString *bundleId = [self getValue:attributes key:@"im:bundleId"];
+            [idAttributesObject setBundleId:[[NSString alloc] initWithString:bundleId]];
+        }
+        
+        [idObject setAttributes:idAttributesObject];
+        [entryObject setId:idObject];
+        
+#pragma mark build Entry:artist
         Artist *artistObject = [NSEntityDescription insertNewObjectForEntityForName:@"Artist" inManagedObjectContext:self.managedObjectContext];
         temp = [self getValue:aEntry key:@"im:artist"];
-        artistObject.label = [self getValue:temp key:@"label"];
+        
+        label = [self getValue:temp key:@"label"];
+        [artistObject setLabel:[[NSString alloc] initWithString:label]];
+        
         ArtistAttributes *artistAttributesObject = [NSEntityDescription insertNewObjectForEntityForName:@"ArtistAttributes" inManagedObjectContext:self.managedObjectContext];
-        temp = [self getValue:temp key:@"attributes"];
-        artistAttributesObject.href = [self getValue:temp key:@"href"];
-        artistObject.attributes = artistAttributesObject;
-        entryObject.artist = artistObject;
+        attributes = [self getValue:temp key:@"attributes"];
         
+        if(nil != (temp = [attributes objectForKey:@"href"]))
+        {
+            NSString *href = [self getValue:attributes key:@"href"];
+            [artistAttributesObject setHref:[[NSString alloc] initWithString:href]];
+        }
+        
+        [artistObject setAttributes:artistAttributesObject];
+        [entryObject setArtist:artistObject];
+        
+#pragma mark build Entry:category
         Categary *categaryObject = [NSEntityDescription insertNewObjectForEntityForName:@"Categary" inManagedObjectContext:self.managedObjectContext];
-        CategoryAttributes *categoryAttributesObject = [NSEntityDescription insertNewObjectForEntityForName:@"CategoryAttributes" inManagedObjectContext:self.managedObjectContext];
         temp = [self getValue:aEntry key:@"category"];
-        temp = [self getValue:temp key:@"attributes"];
-        NSString *idValue = [self getValue:temp key:@"im:id"];
-        categoryAttributesObject.id = [f numberFromString:idValue];
-        categoryAttributesObject.term = [self getValue:temp key:@"term"];
-        categoryAttributesObject.scheme = [self getValue:temp key:@"scheme"];
-        categoryAttributesObject.label = [self getValue:temp key:@"label"];
-        categaryObject.attributes = categoryAttributesObject;
-        entryObject.category = categaryObject;
         
+        CategoryAttributes *categoryAttributesObject = [NSEntityDescription insertNewObjectForEntityForName:@"CategoryAttributes" inManagedObjectContext:self.managedObjectContext];
+        attributes = [self getValue:temp key:@"attributes"];
+        
+        if(nil != (temp = [attributes objectForKey:@"im:id"]))
+        {
+            NSString *_id = [self getValue:attributes key:@"im:id"];
+            [categoryAttributesObject setId:[f numberFromString:_id]];
+        }
+        
+        if(nil != (temp = [attributes objectForKey:@"term"]))
+        {
+            NSString *term = [self getValue:attributes key:@"term"];
+            [categoryAttributesObject setTerm:[[NSString alloc] initWithString:term]];
+        }
+        
+        if(nil != (temp = [attributes objectForKey:@"scheme"]))
+        {
+            NSString *scheme = [self getValue:attributes key:@"scheme"];
+            [categoryAttributesObject setScheme:[[NSString alloc] initWithString:scheme]];
+        }
+        
+        if(nil != (temp = [attributes objectForKey:@"label"]))
+        {
+            NSString *label = [self getValue:attributes key:@"label"];
+            [categoryAttributesObject setLabel:[[NSString alloc] initWithString:label]];
+        }
+        
+        [categaryObject setAttributes:categoryAttributesObject];
+        [entryObject setCategory:categaryObject];
+        
+#pragma mark build Entry:releaseDate
         ReleaseDate *releaseDateObject = [NSEntityDescription insertNewObjectForEntityForName:@"ReleaseDate" inManagedObjectContext:self.managedObjectContext];
         temp = [self getValue:aEntry key:@"im:releaseDate"];
-        releaseDateObject.label = [self getValue:temp key:@"label"];
+        label = [self getValue:temp key:@"label"];
+        [releaseDateObject setLabel:[[NSString alloc] initWithString:label]];
+        
         ReleaseDateAttributes *releaseDateAttributesObject = [NSEntityDescription insertNewObjectForEntityForName:@"ReleaseDateAttributes" inManagedObjectContext:self.managedObjectContext];
-        temp = [self getValue:temp key:@"attributes"];
-        releaseDateAttributesObject.label = [self getValue:temp key:@"label"];
-        releaseDateObject.attributes = releaseDateAttributesObject;
-        entryObject.releaseDate = releaseDateObject;
+        attributes = [self getValue:temp key:@"attributes"];
+        
+        if(nil != (temp = [attributes objectForKey:@"label"]))
+        {
+            NSString *label = [self getValue:attributes key:@"label"];
+            [releaseDateAttributesObject setLabel:[[NSString alloc] initWithString:label]];
+        }
+        
+        [releaseDateObject setAttributes:releaseDateAttributesObject];
+        [entryObject setReleaseDate:releaseDateObject];
         
         
         [entrySet addObject:entryObject];
@@ -432,10 +541,10 @@
     
     NSString *temp = [self getValue:updated key:@"label"];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"%Y-%m-%dT%H:%M:%S%z"];
-    NSDate *date = [dateFormatter dateFromString: temp];
-    //TODO: - Currently a hack... until i understand the date format.
-    updatedObject.label = [NSDate date];
+    [dateFormatter setDateFormat:@"%Y-%m-%d'T'%H:%M:%S%z"];
+    NSDate *date = [[NSDate alloc] init];
+    date = [dateFormatter dateFromString: temp];
+    [updatedObject setLabel:date];
     
     return updatedObject;
 }
@@ -447,7 +556,7 @@
     Rights *rightsObject = [NSEntityDescription insertNewObjectForEntityForName:@"Rights" inManagedObjectContext:self.managedObjectContext];
     
     NSString *label = [self getValue:rights key:@"label"];
-    rightsObject.label = [[NSString alloc] initWithString:label];
+    [rightsObject setLabel:[[NSString alloc] initWithString:label]];
     
     return rightsObject;
 }
@@ -459,7 +568,7 @@
     Title *titleObject = [NSEntityDescription insertNewObjectForEntityForName:@"Title" inManagedObjectContext:self.managedObjectContext];
     
     NSString *label = [self getValue:title key:@"label"];
-    titleObject.label = [[NSString alloc] initWithString:label];
+    [titleObject setLabel:[[NSString alloc] initWithString:label]];
     
     return titleObject;
 }
@@ -471,7 +580,7 @@
     Icon *iconObject = [NSEntityDescription insertNewObjectForEntityForName:@"Icon" inManagedObjectContext:self.managedObjectContext];
     
     NSString *label = [self getValue:icon key:@"label"];
-    iconObject.label = [[NSString alloc] initWithString:label];
+    [iconObject setLabel:[[NSString alloc] initWithString:label]];
     
     return iconObject;
 }
@@ -480,27 +589,38 @@
 {
     NSAssert(link, @"link is null, possibly json's schema has changed?");
     
-    int capacity = [links count];
+    unsigned long capacity = [links count];
     NSMutableSet *set = [[NSMutableSet alloc] initWithCapacity:capacity];
     
     for (NSDictionary *aLink in links)
     {
+        id temp = nil;
         Link *linkObject = [NSEntityDescription insertNewObjectForEntityForName:@"Link" inManagedObjectContext:self.managedObjectContext];
         LinkAttributes *linkAttributesObject = [NSEntityDescription insertNewObjectForEntityForName:@"LinkAttributes" inManagedObjectContext:self.managedObjectContext];
         
-        id temp = [self getValue:aLink key:@"attributes"];
-        linkAttributesObject.rel = [self getValue:temp key:@"rel"];
-        id type = nil;
-        if(nil != (type = [temp objectForKey:@"type"]))
-            linkAttributesObject.type = [self getValue:temp key:@"type"];
-        linkAttributesObject.href = [self getValue:temp key:@"href"];
+        id attributes = [self getValue:aLink key:@"attributes"];
         
-        linkObject.attributes = linkAttributesObject;
+        if(nil != (temp = [attributes objectForKey:@"rel"]))
+        {
+            NSString *rel = [self getValue:attributes key:@"rel"];
+            [linkAttributesObject setRel:[[NSString alloc] initWithString:rel]];
+        }
+        
+        if(nil != (temp = [attributes objectForKey:@"type"]))
+        {
+            NSString *type = [self getValue:attributes key:@"type"];
+            [linkAttributesObject setRel:[[NSString alloc] initWithString:type]];
+        }
+        
+        if(nil != (temp = [attributes objectForKey:@"href"]))
+        {
+            NSString *href = [self getValue:attributes key:@"href"];
+            [linkAttributesObject setRel:[[NSString alloc] initWithString:href]];
+        }
+        [linkObject setAttributes:linkAttributesObject];
         
         [set addObject:linkObject];
     }
-    
-    
     
     return set;
 }
@@ -512,31 +632,36 @@
     Id *_idObject = [NSEntityDescription insertNewObjectForEntityForName:@"Id" inManagedObjectContext:self.managedObjectContext];
     
     NSString *label = [self getValue:_id key:@"label"];
-    _idObject.label = [[NSString alloc] initWithString:label];
+    [_idObject setLabel:[[NSString alloc] initWithString:label]];
     
     return _idObject;
 }
 
-- (void)buildFeed:(id)feed
+- (Feed*)buildFeed:(id)feed
 {
     NSAssert(feed, @"feed is null, possibly json's schema has changed?");
     
     Feed *feedObject = [NSEntityDescription insertNewObjectForEntityForName:@"Feed"
                                                inManagedObjectContext:self.managedObjectContext];
     
-    feedObject.author = [self buildAuthor:[feed objectForKey:@"author"]];
-    feedObject.entry = [self buildEntry:[feed objectForKey:@"entry"]];
-    feedObject.updated = [self buildUpdated:[feed objectForKey:@"updated"]];
-    feedObject.rights = [self buildRights:[feed objectForKey:@"rights"]];
-    feedObject.title = [self buildTitle:[feed objectForKey:@"title"]];
-    feedObject.icon = [self buildIcon:[feed objectForKey:@"icon"]];
-    feedObject.link = [self buildLink:[feed objectForKey:@"link"]];
-    feedObject.id = [self buildId:[feed objectForKey:@"id"]];
+    [feedObject setAuthor:[self buildAuthor:[feed objectForKey:@"author"]]];
+    [feedObject setEntry:[self buildEntry:[feed objectForKey:@"entry"]]];
+    [feedObject setUpdated:[self buildUpdated:[feed objectForKey:@"updated"]]];
+    [feedObject setRights:[self buildRights:[feed objectForKey:@"rights"]]];
+    [feedObject setTitle:[self buildTitle:[feed objectForKey:@"title"]]];
+    [feedObject setIcon:[self buildIcon:[feed objectForKey:@"icon"]]];
+    [feedObject setLink:[self buildLink:[feed objectForKey:@"link"]]];
+    [feedObject setId:[self buildId:[feed objectForKey:@"id"]]];
+    
+    NSError *error;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
+    return feedObject;
 }
 
-- (void)fetchJSON:(NSData *)responseData
+-(void)update:(NSData*)responseData
 {
-    //parse out the json data
     if(responseData != nil)
     {
         NSError* error;
@@ -546,43 +671,51 @@
                               options:kNilOptions
                               error:&error];
         
-        [self buildFeed:[json objectForKey:@"feed"]];
+        NSDictionary *feed = [self getValue:json key:@"feed"];
+        id updated = [self getValue:feed key:@"updated"];
+        NSString *dateString = [self getValue:updated key:@"label"];
         
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"%Y-%m-%d'T'%H:%M:%S%z"];
+        NSDate *lastUpdated = [[NSDate alloc] init];
+        lastUpdated = [dateFormatter dateFromString:dateString];
         
-//        id entries = [feed objectForKey:[[NSUserDefaults standardUserDefaults] stringForKey:@"entry"]];
-//        
-//        for (id currentEntry in entries)
-//        {
-//            id entry = [[Entry alloc] initWithJsonEntry:currentEntry];
-//            
-//            if (![self entryExists:entry])
-//            {
-//                NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
-//                NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
-//                NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
-//                
-//                
-//                // If appropriate, configure the new managed object.
-//                // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
-//                
-//                NSData *data=[NSKeyedArchiver archivedDataWithRootObject:entry];
-//                [newManagedObject setValue:data forKey:@"entry"];
-//                [newManagedObject setValue:[NSDate date] forKey:@"timeStamp"];
-//                [newManagedObject setValue:[entry urlID] forKey:@"urlID"];
-//                [newManagedObject setValue:[entry title] forKey:@"title"];
-//                
-//                // Save the context.
-//                NSError *error = nil;
-//                if (![context save:&error]) {
-//                    // Replace this implementation with code to handle the error appropriately.
-//                    // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-//                    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-//                    abort();
-//                }
-//            }
-//        }
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Feed" inManagedObjectContext:self.managedObjectContext];
+        [fetchRequest setEntity:entity];
+        
+        BOOL buildFeed = YES;
+        NSArray *array = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+        if ([array count] > 0)
+        {
+            buildFeed = NO;
+            Feed *savedFeed = [array objectAtIndex:0];
+            Updated *updated = [savedFeed updated];
+            NSDate *lastSavedUpdated = [updated label];
+            
+            //The database updated date is older than the json updated date
+            if ([lastSavedUpdated compare:lastUpdated] == NSOrderedAscending) {
+                [self.managedObjectContext deleteObject:savedFeed];
+                buildFeed = YES;
+            } else if ([lastSavedUpdated compare:lastUpdated] == NSOrderedDescending) {
+                NSAssert(NO, @"Something is wrong, the database date is newer than the recently downloaded date");
+            } else {
+                NSLog(@"updated dates are the same");
+                _currentFeed = savedFeed;
+            }
+        }
+        
+        if (buildFeed)
+        {
+            _currentFeed = [self buildFeed:feed];
+        }
     }
-    
+}
+
+
+- (void)fetchJSON:(NSData *)responseData
+{
+    [self update:responseData];    
 }
 
 @end
