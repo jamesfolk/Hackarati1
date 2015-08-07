@@ -12,5 +12,6 @@
 @implementation ImageAttributes
 
 @dynamic height;
+@dynamic uiimage;
 
 @end

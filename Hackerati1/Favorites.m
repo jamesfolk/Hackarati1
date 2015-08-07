@@ -1,16 +1,17 @@
 //
-//  Event.m
+//  Favorites.m
 //  Hackerati1
 //
 //  Created by James Folk on 8/7/15.
 //  Copyright (c) 2015 James Folk. All rights reserved.
 //
 
-#import "Event.h"
+#import "Favorites.h"
+#import "Entry.h"
 
 
-@implementation Event
+@implementation Favorites
 
-@dynamic timeStamp;
+@dynamic entries;
 
 @end

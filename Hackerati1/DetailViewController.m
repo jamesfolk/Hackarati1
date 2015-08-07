@@ -7,8 +7,16 @@
 //
 
 #import "DetailViewController.h"
+#import "Summary.h"
+#import "Title.h"
+#import "Id.h"
+#import "Image.h"
+#import "ImageAttributes.h"
 
 @interface DetailViewController ()
+
+@property (strong, nonatomic) UIPopoverController *activityPopover;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *shareButton;
 
 @end
 
@@ -27,8 +35,11 @@
 
 - (void)configureView {
     // Update the user interface for the detail item.
+    
     if (self.detailItem) {
-        self.detailDescriptionLabel.text = [[self.detailItem valueForKey:@"timeStamp"] description];
+        Title *title = [_detailItem title];
+        self.title = [title label];
+        self.detailDescriptionLabel.text = [[_detailItem summary] label];
     }
 }
 
@@ -41,6 +52,71 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)share:(id)sender
+{
+    NSString *title = [[self.detailItem title] label];
+    NSString *summary = [[self.detailItem summary] label];
+    BOOL isFavorite = [[self.detailItem favorite] boolValue];
+    NSString *favoriteString = @"";
+    if(isFavorite)
+        favoriteString = @"**One of my favorites**\n\n";
+    
+    NSString *text = [[NSString alloc] initWithFormat:@"%@\n%@\n\n%@\n\n", favoriteString, title, summary];
+    NSURL *url = [NSURL URLWithString:[[self.detailItem id] label]];
+    NSNumber *largestNumber = [NSNumber numberWithInt:0];
+    NSSet *images = [self.detailItem image];
+    NSData *data = nil;
+    UIImage *image = nil;
+    
+    for (Image *img in images)
+    {
+        NSComparisonResult result = [largestNumber compare:[[img attributes] height]];
+        if(result == NSOrderedAscending)
+        {
+            data = [[img attributes] uiimage];
+        }
+    }
+    UIActivityViewController *controller = nil;
+    
+    if (data)
+    {
+        image = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        controller =
+        [[UIActivityViewController alloc]
+         initWithActivityItems:@[image, text, url]
+         applicationActivities:nil];
+    }
+    else
+    {
+        controller =
+        [[UIActivityViewController alloc]
+         initWithActivityItems:@[text, url]
+         applicationActivities:nil];
+    }
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        [self presentViewController:controller animated:YES completion:nil];
+    }
+    else
+    {
+        UIView *targetView = (UIView *)[self.shareButton performSelector:@selector(view)];
+        CGRect rect = targetView.frame;
+        rect.origin.y = rect.origin.y + rect.size.height;
+        
+        if (![self.activityPopover isPopoverVisible])
+        {
+            self.activityPopover = [[UIPopoverController alloc] initWithContentViewController:controller];
+            [self.activityPopover presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        }
+        else
+        {
+            //Dismiss if the button is tapped while pop over is visible
+            [self.activityPopover dismissPopoverAnimated:YES];
+        }
+    }
 }
 
 @end

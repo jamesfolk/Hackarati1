@@ -28,6 +28,7 @@
         <attribute name="term" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Entry" representedClassName="Entry" syncable="YES">
+        <attribute name="favorite" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <relationship name="artist" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Artist" syncable="YES"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Categary" syncable="YES"/>
         <relationship name="contentType" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="ContentType" syncable="YES"/>
@@ -41,11 +42,8 @@
         <relationship name="summary" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Summary" syncable="YES"/>
         <relationship name="title" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Title" syncable="YES"/>
     </entity>
-    <entity name="Event" representedClassName="Event">
-        <attribute name="timeStamp" optional="YES" attributeType="Date">
-            <userInfo/>
-        </attribute>
-        <userInfo/>
+    <entity name="Favorites" representedClassName="Favorites" syncable="YES">
+        <relationship name="entries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Entry" syncable="YES"/>
     </entity>
     <entity name="Feed" representedClassName="Feed" syncable="YES">
         <relationship name="author" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Author" syncable="YES"/>
@@ -74,6 +72,7 @@
     </entity>
     <entity name="ImageAttributes" representedClassName="ImageAttributes" syncable="YES">
         <attribute name="height" optional="YES" attributeType="Integer 32" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="uiimage" optional="YES" attributeType="Binary" syncable="YES"/>
     </entity>
     <entity name="Link" representedClassName="Link" syncable="YES">
         <relationship name="attributes" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="LinkAttributes" syncable="YES"/>
@@ -109,6 +108,8 @@
     </entity>
     <entity name="Title" representedClassName="Title" syncable="YES">
         <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="entry" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Entry" syncable="YES"/>
+        <relationship name="feed" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Feed" syncable="YES"/>
     </entity>
     <entity name="Updated" representedClassName="Updated" syncable="YES">
         <attribute name="label" optional="YES" attributeType="Date" syncable="YES"/>
@@ -117,13 +118,12 @@
         <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Event" positionX="-297" positionY="-459" width="128" height="58"/>
         <element name="Updated" positionX="52" positionY="-27" width="128" height="58"/>
-        <element name="Entry" positionX="-155" positionY="-376" width="128" height="223"/>
+        <element name="Entry" positionX="-155" positionY="-376" width="128" height="238"/>
         <element name="Author" positionX="-11" positionY="-460" width="128" height="73"/>
         <element name="Icon" positionX="-288" positionY="-189" width="128" height="58"/>
         <element name="Rights" positionX="333" positionY="-189" width="128" height="58"/>
-        <element name="Title" positionX="268" positionY="-54" width="128" height="58"/>
+        <element name="Title" positionX="718" positionY="-40" width="128" height="88"/>
         <element name="Feed" positionX="162" positionY="-306" width="128" height="163"/>
         <element name="Link" positionX="315" positionY="-288" width="128" height="58"/>
         <element name="Id" positionX="-54" positionY="-144" width="128" height="73"/>
@@ -131,7 +131,7 @@
         <element name="Uri" positionX="133" positionY="-562" width="128" height="58"/>
         <element name="LinkAttributes" positionX="295" positionY="-432" width="128" height="88"/>
         <element name="Image" positionX="-153" positionY="-522" width="128" height="73"/>
-        <element name="ImageAttributes" positionX="-9" positionY="-549" width="128" height="58"/>
+        <element name="ImageAttributes" positionX="-9" positionY="-562" width="128" height="73"/>
         <element name="Summary" positionX="-180" positionY="-585" width="128" height="58"/>
         <element name="Price" positionX="-207" positionY="-63" width="128" height="73"/>
         <element name="PriceAttributes" positionX="-72" positionY="-54" width="128" height="73"/>
@@ -144,5 +144,6 @@
         <element name="CategoryAttributes" positionX="-38" positionY="189" width="128" height="103"/>
         <element name="ReleaseDate" positionX="79" positionY="182" width="128" height="73"/>
         <element name="ReleaseDateAttributes" positionX="268" positionY="191" width="128" height="58"/>
+        <element name="Favorites" positionX="-333" positionY="-486" width="128" height="58"/>
     </elements>
 </model>

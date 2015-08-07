@@ -39,6 +39,10 @@
 @interface MasterViewController ()
 
 @property (strong, nonatomic) Feed *currentFeed;
+@property (strong, nonatomic) NSArray *favorites;
+
+@property (strong, nonatomic) UIBarButtonItem *shareButton;
+@property (strong, nonatomic) UIPopoverController *activityPopover;
 
 @end
 
@@ -55,10 +59,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+//    self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
+    self.shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(share:)];
+    self.navigationItem.rightBarButtonItem = self.shareButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
     
@@ -80,6 +84,36 @@
         NSData* data = [NSData dataWithContentsOfURL: [NSURL URLWithString:url]];
         [self performSelectorOnMainThread:@selector(fetchJSON:) withObject:data waitUntilDone:YES];
     });
+    
+    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to refresh"];
+    [refresh addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refresh;
+    
+    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+    NSError *error = nil;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Feed" inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    
+    NSArray *array = [context executeFetchRequest:fetchRequest error:&error];
+    if ([array count] > 0)
+    {
+        Feed *savedFeed = [array objectAtIndex:0];
+        Title *title = [savedFeed title];
+        self.title = [title label];
+    }
+    else
+    {
+        self.title = @"Updating...";
+    }
+    
+    fetchRequest = [[NSFetchRequest alloc] init];
+    entity = [NSEntityDescription entityForName:@"Favorites" inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    
+    _favorites = [context executeFetchRequest:fetchRequest error:&error];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -87,33 +121,33 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)insertNewObject:(id)sender {
-    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
-    NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
-    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
-        
-    // If appropriate, configure the new managed object.
-    // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
-    [newManagedObject setValue:[NSDate date] forKey:@"timeStamp"];
-        
-    // Save the context.
-    NSError *error = nil;
-    if (![context save:&error]) {
-        // Replace this implementation with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-}
+//- (void)insertNewObject:(id)sender {
+//    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+//    NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
+//    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
+//        
+//    // If appropriate, configure the new managed object.
+//    // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
+//    [newManagedObject setValue:[NSDate date] forKey:@"timeStamp"];
+//        
+//    // Save the context.
+//    NSError *error = nil;
+//    if (![context save:&error]) {
+//        // Replace this implementation with code to handle the error appropriately.
+//        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+//        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+//        abort();
+//    }
+//}
 
 #pragma mark - Segues
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+        Title *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
         DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
-        [controller setDetailItem:object];
+        [controller setDetailItem:[object entry]];
         controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
         controller.navigationItem.leftItemsSupplementBackButton = YES;
     }
@@ -158,7 +192,8 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [[object valueForKey:@"timeStamp"] description];
+//    cell.textLabel.text = [[object valueForKey:@"timeStamp"] description];
+    cell.textLabel.text = [[object valueForKey:@"label"] description];
 }
 
 #pragma mark - Fetched results controller
@@ -171,14 +206,14 @@
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Title" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
     
     // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"label" ascending:NO];
     NSArray *sortDescriptors = @[sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
@@ -189,13 +224,13 @@
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     
-	NSError *error = nil;
-	if (![self.fetchedResultsController performFetch:&error]) {
-	     // Replace this implementation with code to handle the error appropriately.
-	     // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-	    abort();
-	}
+    NSError *error = nil;
+    if (![self.fetchedResultsController performFetch:&error]) {
+        // Replace this implementation with code to handle the error appropriately.
+        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
     
     return _fetchedResultsController;
 }    
@@ -274,17 +309,19 @@
 
 - (Author *)buildAuthor:(id)author
 {
+    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+    
     NSAssert(author, @"author is null, possibly json's schema has changed?");
     
-    Author *authorObject = [NSEntityDescription insertNewObjectForEntityForName:@"Author" inManagedObjectContext:self.managedObjectContext];
+    Author *authorObject = [NSEntityDescription insertNewObjectForEntityForName:@"Author" inManagedObjectContext:context];
     
-    Name *nameObject = [NSEntityDescription insertNewObjectForEntityForName:@"Name" inManagedObjectContext:self.managedObjectContext];
+    Name *nameObject = [NSEntityDescription insertNewObjectForEntityForName:@"Name" inManagedObjectContext:context];
     id name = [self getValue:author key:@"name"];
     NSString *label = [self getValue:name key:@"label"];
     [nameObject setLabel:[[NSString alloc] initWithString:label]];
     
     
-    Uri *uriObject = [NSEntityDescription insertNewObjectForEntityForName:@"Uri" inManagedObjectContext:self.managedObjectContext];
+    Uri *uriObject = [NSEntityDescription insertNewObjectForEntityForName:@"Uri" inManagedObjectContext:context];
     id uri = [self getValue:author key:@"uri"];
     label = [self getValue:uri key:@"label"];
     [uriObject setLabel:[[NSString alloc] initWithString:label]];
@@ -295,8 +332,27 @@
     return authorObject;
 }
 
+-(UIImage*)createEmptyImage:(CGFloat)dim
+{
+    CGSize newSize = CGSizeMake(dim, dim);
+    CGRect rect = CGRectMake(0,0,newSize.width,newSize.height);
+    
+    UIGraphicsBeginImageContextWithOptions(newSize, YES, 1.0);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetRGBFillColor(context, 0.7, 0.7, 0.7, 1.0);
+    CGContextFillRect(context, rect);
+    
+    UIImage *backgroundImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return backgroundImage;
+}
+
 - (NSSet *)buildEntry:(id)entries
 {
+    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+    
     NSAssert(entries, @"entries are null, possibly json's schema has changed?");
     
     unsigned long capacity = [entries count];
@@ -305,10 +361,10 @@
     
     for (NSDictionary *aEntry in entries)
     {
-        Entry *entryObject = [NSEntityDescription insertNewObjectForEntityForName:@"Entry" inManagedObjectContext:self.managedObjectContext];
+        Entry *entryObject = [NSEntityDescription insertNewObjectForEntityForName:@"Entry" inManagedObjectContext:context];
         
 #pragma mark build Entry:name
-        Name *nameObject = [NSEntityDescription insertNewObjectForEntityForName:@"Name" inManagedObjectContext:self.managedObjectContext];
+        Name *nameObject = [NSEntityDescription insertNewObjectForEntityForName:@"Name" inManagedObjectContext:context];
         temp = [self getValue:aEntry key:@"im:name"];
         NSString *label = [self getValue:temp key:@"label"];
         [nameObject setLabel:[[NSString alloc] initWithString:label]];
@@ -322,17 +378,22 @@
         f.numberStyle = NSNumberFormatterDecimalStyle;
         for (NSDictionary *img in images)
         {
-            Image *imageObject = [NSEntityDescription insertNewObjectForEntityForName:@"Image" inManagedObjectContext:self.managedObjectContext];
+            Image *imageObject = [NSEntityDescription insertNewObjectForEntityForName:@"Image" inManagedObjectContext:context];
             label = [self getValue:img key:@"label"];
             [imageObject setLabel:[[NSString alloc] initWithString:label]];
             
-            ImageAttributes *imageAttributesObject = [NSEntityDescription insertNewObjectForEntityForName:@"ImageAttributes" inManagedObjectContext:self.managedObjectContext];
+            ImageAttributes *imageAttributesObject = [NSEntityDescription insertNewObjectForEntityForName:@"ImageAttributes" inManagedObjectContext:context];
             id attributes = [self getValue:img key:@"attributes"];
             
             if(nil != (temp = [attributes objectForKey:@"height"]))
             {
                 NSString *height = [self getValue:attributes key:@"height"];
-                [imageAttributesObject setHeight:[f numberFromString:height]];
+                NSNumber *theHeight = [f numberFromString:height];
+                [imageAttributesObject setHeight:theHeight];
+                
+                UIImage *img = [self createEmptyImage:[theHeight floatValue]];
+                NSData *imgData=[NSKeyedArchiver archivedDataWithRootObject:img];
+                [imageAttributesObject setUiimage:imgData];
             }
             [imageObject setAttributes:imageAttributesObject];
             
@@ -341,19 +402,19 @@
         [entryObject setImage:imageSet];
         
 #pragma mark build Entry:summary
-        Summary *summaryObject = [NSEntityDescription insertNewObjectForEntityForName:@"Summary" inManagedObjectContext:self.managedObjectContext];
+        Summary *summaryObject = [NSEntityDescription insertNewObjectForEntityForName:@"Summary" inManagedObjectContext:context];
         temp = [self getValue:aEntry key:@"summary"];
         label = [self getValue:temp key:@"label"];
         [summaryObject setLabel:[[NSString alloc] initWithString:label]];
         [entryObject setSummary:summaryObject];
         
 #pragma mark build Entry:price
-        Price *priceObject = [NSEntityDescription insertNewObjectForEntityForName:@"Price" inManagedObjectContext:self.managedObjectContext];
+        Price *priceObject = [NSEntityDescription insertNewObjectForEntityForName:@"Price" inManagedObjectContext:context];
         temp = [self getValue:aEntry key:@"im:price"];
         label = [self getValue:temp key:@"label"];
         [priceObject setLabel:[[NSString alloc] initWithString:label]];
         
-        PriceAttributes *priceAttributesObject = [NSEntityDescription insertNewObjectForEntityForName:@"PriceAttributes" inManagedObjectContext:self.managedObjectContext];
+        PriceAttributes *priceAttributesObject = [NSEntityDescription insertNewObjectForEntityForName:@"PriceAttributes" inManagedObjectContext:context];
         id attributes = [self getValue:temp key:@"attributes"];
         
         if(nil != (temp = [attributes objectForKey:@"amount"]))
@@ -371,8 +432,8 @@
         [entryObject setPrice:priceObject];
         
 #pragma mark build Entry:contentType
-        ContentType *contentTypeObject = [NSEntityDescription insertNewObjectForEntityForName:@"ContentType" inManagedObjectContext:self.managedObjectContext];
-        ContentTypeAttributes *contentTypeAttributes = [NSEntityDescription insertNewObjectForEntityForName:@"ContentTypeAttributes" inManagedObjectContext:self.managedObjectContext];
+        ContentType *contentTypeObject = [NSEntityDescription insertNewObjectForEntityForName:@"ContentType" inManagedObjectContext:context];
+        ContentTypeAttributes *contentTypeAttributes = [NSEntityDescription insertNewObjectForEntityForName:@"ContentTypeAttributes" inManagedObjectContext:context];
         temp = [self getValue:aEntry key:@"im:contentType"];
         attributes = [self getValue:temp key:@"attributes"];
         if(nil != (temp = [attributes objectForKey:@"term"]))
@@ -389,7 +450,7 @@
         [entryObject setContentType:contentTypeObject];
         
 #pragma mark build Entry:rights
-        Rights *rightsObject = [NSEntityDescription insertNewObjectForEntityForName:@"Rights" inManagedObjectContext:self.managedObjectContext];
+        Rights *rightsObject = [NSEntityDescription insertNewObjectForEntityForName:@"Rights" inManagedObjectContext:context];
         
         temp = [self getValue:aEntry key:@"rights"];
         label = [self getValue:temp key:@"label"];
@@ -397,17 +458,19 @@
         [entryObject setRights:rightsObject];
         
 #pragma mark build Entry:title
-        Title *titleObject = [NSEntityDescription insertNewObjectForEntityForName:@"Title" inManagedObjectContext:self.managedObjectContext];
+        Title *titleObject = [NSEntityDescription insertNewObjectForEntityForName:@"Title" inManagedObjectContext:context];
         temp = [self getValue:aEntry key:@"title"];
         label = [self getValue:temp key:@"label"];
         [titleObject setLabel:[[NSString alloc] initWithString:label]];
+        [titleObject setEntry:entryObject];
+        [titleObject setFeed:nil];
         [entryObject setTitle:titleObject];
         
 #pragma mark build Entry:link
-        Link *linkObject = [NSEntityDescription insertNewObjectForEntityForName:@"Link" inManagedObjectContext:self.managedObjectContext];
+        Link *linkObject = [NSEntityDescription insertNewObjectForEntityForName:@"Link" inManagedObjectContext:context];
         temp = [self getValue:aEntry key:@"link"];
         attributes = [self getValue:temp key:@"attributes"];
-        LinkAttributes *linkAttributesObject = [NSEntityDescription insertNewObjectForEntityForName:@"LinkAttributes" inManagedObjectContext:self.managedObjectContext];
+        LinkAttributes *linkAttributesObject = [NSEntityDescription insertNewObjectForEntityForName:@"LinkAttributes" inManagedObjectContext:context];
         
         if(nil != (temp = [attributes objectForKey:@"rel"]))
         {
@@ -431,12 +494,12 @@
         [entryObject setLink:linkObject];
         
 #pragma mark build Entry:id
-        Id *idObject = [NSEntityDescription insertNewObjectForEntityForName:@"Id" inManagedObjectContext:self.managedObjectContext];
+        Id *idObject = [NSEntityDescription insertNewObjectForEntityForName:@"Id" inManagedObjectContext:context];
         temp = [self getValue:aEntry key:@"id"];
         label = [self getValue:temp key:@"label"];
         [idObject setLabel:[[NSString alloc] initWithString:label]];
         
-        IdAttributes *idAttributesObject = [NSEntityDescription insertNewObjectForEntityForName:@"IdAttributes" inManagedObjectContext:self.managedObjectContext];
+        IdAttributes *idAttributesObject = [NSEntityDescription insertNewObjectForEntityForName:@"IdAttributes" inManagedObjectContext:context];
         attributes = [self getValue:temp key:@"attributes"];
         
         if(nil != (temp = [attributes objectForKey:@"im:id"]))
@@ -455,13 +518,13 @@
         [entryObject setId:idObject];
         
 #pragma mark build Entry:artist
-        Artist *artistObject = [NSEntityDescription insertNewObjectForEntityForName:@"Artist" inManagedObjectContext:self.managedObjectContext];
+        Artist *artistObject = [NSEntityDescription insertNewObjectForEntityForName:@"Artist" inManagedObjectContext:context];
         temp = [self getValue:aEntry key:@"im:artist"];
         
         label = [self getValue:temp key:@"label"];
         [artistObject setLabel:[[NSString alloc] initWithString:label]];
         
-        ArtistAttributes *artistAttributesObject = [NSEntityDescription insertNewObjectForEntityForName:@"ArtistAttributes" inManagedObjectContext:self.managedObjectContext];
+        ArtistAttributes *artistAttributesObject = [NSEntityDescription insertNewObjectForEntityForName:@"ArtistAttributes" inManagedObjectContext:context];
         attributes = [self getValue:temp key:@"attributes"];
         
         if(nil != (temp = [attributes objectForKey:@"href"]))
@@ -474,10 +537,10 @@
         [entryObject setArtist:artistObject];
         
 #pragma mark build Entry:category
-        Categary *categaryObject = [NSEntityDescription insertNewObjectForEntityForName:@"Categary" inManagedObjectContext:self.managedObjectContext];
+        Categary *categaryObject = [NSEntityDescription insertNewObjectForEntityForName:@"Categary" inManagedObjectContext:context];
         temp = [self getValue:aEntry key:@"category"];
         
-        CategoryAttributes *categoryAttributesObject = [NSEntityDescription insertNewObjectForEntityForName:@"CategoryAttributes" inManagedObjectContext:self.managedObjectContext];
+        CategoryAttributes *categoryAttributesObject = [NSEntityDescription insertNewObjectForEntityForName:@"CategoryAttributes" inManagedObjectContext:context];
         attributes = [self getValue:temp key:@"attributes"];
         
         if(nil != (temp = [attributes objectForKey:@"im:id"]))
@@ -508,12 +571,12 @@
         [entryObject setCategory:categaryObject];
         
 #pragma mark build Entry:releaseDate
-        ReleaseDate *releaseDateObject = [NSEntityDescription insertNewObjectForEntityForName:@"ReleaseDate" inManagedObjectContext:self.managedObjectContext];
+        ReleaseDate *releaseDateObject = [NSEntityDescription insertNewObjectForEntityForName:@"ReleaseDate" inManagedObjectContext:context];
         temp = [self getValue:aEntry key:@"im:releaseDate"];
         label = [self getValue:temp key:@"label"];
         [releaseDateObject setLabel:[[NSString alloc] initWithString:label]];
         
-        ReleaseDateAttributes *releaseDateAttributesObject = [NSEntityDescription insertNewObjectForEntityForName:@"ReleaseDateAttributes" inManagedObjectContext:self.managedObjectContext];
+        ReleaseDateAttributes *releaseDateAttributesObject = [NSEntityDescription insertNewObjectForEntityForName:@"ReleaseDateAttributes" inManagedObjectContext:context];
         attributes = [self getValue:temp key:@"attributes"];
         
         if(nil != (temp = [attributes objectForKey:@"label"]))
@@ -526,6 +589,15 @@
         [entryObject setReleaseDate:releaseDateObject];
         
         
+        [entryObject setFavorite:[NSNumber numberWithBool:NO]];
+        for (Entry *favoriteEntry in _favorites)
+        {
+            if ([entryObject isEqual:favoriteEntry])
+            {
+                [entryObject setFavorite:[NSNumber numberWithBool:YES]];
+            }
+        }
+        
         [entrySet addObject:entryObject];
     }
     
@@ -535,9 +607,11 @@
 
 - (Updated *)buildUpdated:(id)updated
 {
+    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+    
     NSAssert(updated, @"updated is null, possibly json's schema has changed?");
     
-    Updated *updatedObject = [NSEntityDescription insertNewObjectForEntityForName:@"Updated" inManagedObjectContext:self.managedObjectContext];
+    Updated *updatedObject = [NSEntityDescription insertNewObjectForEntityForName:@"Updated" inManagedObjectContext:context];
     
     NSString *temp = [self getValue:updated key:@"label"];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -551,9 +625,11 @@
 
 - (Rights *)buildRights:(id)rights
 {
+    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+    
     NSAssert(rights, @"rights is null, possibly json's schema has changed?");
     
-    Rights *rightsObject = [NSEntityDescription insertNewObjectForEntityForName:@"Rights" inManagedObjectContext:self.managedObjectContext];
+    Rights *rightsObject = [NSEntityDescription insertNewObjectForEntityForName:@"Rights" inManagedObjectContext:context];
     
     NSString *label = [self getValue:rights key:@"label"];
     [rightsObject setLabel:[[NSString alloc] initWithString:label]];
@@ -563,9 +639,11 @@
 
 - (Title *)buildTitle:(id)title
 {
+    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+    
     NSAssert(title, @"title is null, possibly json's schema has changed?");
     
-    Title *titleObject = [NSEntityDescription insertNewObjectForEntityForName:@"Title" inManagedObjectContext:self.managedObjectContext];
+    Title *titleObject = [NSEntityDescription insertNewObjectForEntityForName:@"Title" inManagedObjectContext:context];
     
     NSString *label = [self getValue:title key:@"label"];
     [titleObject setLabel:[[NSString alloc] initWithString:label]];
@@ -575,9 +653,11 @@
 
 - (Icon *)buildIcon:(id)icon
 {
+    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+    
     NSAssert(icon, @"icon is null, possibly json's schema has changed?");
     
-    Icon *iconObject = [NSEntityDescription insertNewObjectForEntityForName:@"Icon" inManagedObjectContext:self.managedObjectContext];
+    Icon *iconObject = [NSEntityDescription insertNewObjectForEntityForName:@"Icon" inManagedObjectContext:context];
     
     NSString *label = [self getValue:icon key:@"label"];
     [iconObject setLabel:[[NSString alloc] initWithString:label]];
@@ -587,6 +667,8 @@
 
 - (NSSet *)buildLink:(id)links
 {
+    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+    
     NSAssert(link, @"link is null, possibly json's schema has changed?");
     
     unsigned long capacity = [links count];
@@ -595,8 +677,8 @@
     for (NSDictionary *aLink in links)
     {
         id temp = nil;
-        Link *linkObject = [NSEntityDescription insertNewObjectForEntityForName:@"Link" inManagedObjectContext:self.managedObjectContext];
-        LinkAttributes *linkAttributesObject = [NSEntityDescription insertNewObjectForEntityForName:@"LinkAttributes" inManagedObjectContext:self.managedObjectContext];
+        Link *linkObject = [NSEntityDescription insertNewObjectForEntityForName:@"Link" inManagedObjectContext:context];
+        LinkAttributes *linkAttributesObject = [NSEntityDescription insertNewObjectForEntityForName:@"LinkAttributes" inManagedObjectContext:context];
         
         id attributes = [self getValue:aLink key:@"attributes"];
         
@@ -627,9 +709,11 @@
 
 - (Id *)buildId:(id)_id
 {
+    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+    
     NSAssert(_id, @"id is null, possibly json's schema has changed?");
     
-    Id *_idObject = [NSEntityDescription insertNewObjectForEntityForName:@"Id" inManagedObjectContext:self.managedObjectContext];
+    Id *_idObject = [NSEntityDescription insertNewObjectForEntityForName:@"Id" inManagedObjectContext:context];
     
     NSString *label = [self getValue:_id key:@"label"];
     [_idObject setLabel:[[NSString alloc] initWithString:label]];
@@ -639,22 +723,29 @@
 
 - (Feed*)buildFeed:(id)feed
 {
+    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+    
     NSAssert(feed, @"feed is null, possibly json's schema has changed?");
     
     Feed *feedObject = [NSEntityDescription insertNewObjectForEntityForName:@"Feed"
-                                               inManagedObjectContext:self.managedObjectContext];
+                                               inManagedObjectContext:context];
     
     [feedObject setAuthor:[self buildAuthor:[feed objectForKey:@"author"]]];
     [feedObject setEntry:[self buildEntry:[feed objectForKey:@"entry"]]];
     [feedObject setUpdated:[self buildUpdated:[feed objectForKey:@"updated"]]];
     [feedObject setRights:[self buildRights:[feed objectForKey:@"rights"]]];
-    [feedObject setTitle:[self buildTitle:[feed objectForKey:@"title"]]];
+    
+    Title *titleObject = [self buildTitle:[feed objectForKey:@"title"]];
+    [titleObject setEntry:nil];
+    [titleObject setFeed:feedObject];
+    [feedObject setTitle:titleObject];
+    
     [feedObject setIcon:[self buildIcon:[feed objectForKey:@"icon"]]];
     [feedObject setLink:[self buildLink:[feed objectForKey:@"link"]]];
     [feedObject setId:[self buildId:[feed objectForKey:@"id"]]];
     
     NSError *error;
-    if (![self.managedObjectContext save:&error]) {
+    if (![context save:&error]) {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
     return feedObject;
@@ -664,6 +755,8 @@
 {
     if(responseData != nil)
     {
+        NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+        
         NSError* error;
         
         NSDictionary* json = [NSJSONSerialization
@@ -681,11 +774,11 @@
         lastUpdated = [dateFormatter dateFromString:dateString];
         
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Feed" inManagedObjectContext:self.managedObjectContext];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Feed" inManagedObjectContext:context];
         [fetchRequest setEntity:entity];
         
         BOOL buildFeed = YES;
-        NSArray *array = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+        NSArray *array = [context executeFetchRequest:fetchRequest error:&error];
         if ([array count] > 0)
         {
             buildFeed = NO;
@@ -695,7 +788,7 @@
             
             //The database updated date is older than the json updated date
             if ([lastSavedUpdated compare:lastUpdated] == NSOrderedAscending) {
-                [self.managedObjectContext deleteObject:savedFeed];
+                [context deleteObject:savedFeed];
                 buildFeed = YES;
             } else if ([lastSavedUpdated compare:lastUpdated] == NSOrderedDescending) {
                 NSAssert(NO, @"Something is wrong, the database date is newer than the recently downloaded date");
@@ -709,6 +802,13 @@
         {
             _currentFeed = [self buildFeed:feed];
         }
+        
+        
+        Title *title = [_currentFeed title];
+        self.title = [title label];
+        
+        
+        
     }
 }
 
@@ -716,6 +816,66 @@
 - (void)fetchJSON:(NSData *)responseData
 {
     [self update:responseData];    
+}
+
+- (void)refreshView:(UIRefreshControl *)refresh
+{
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refreshing data..."];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        NSString *url = [[NSUserDefaults standardUserDefaults] stringForKey:@"itunesLink"];
+        
+        NSData* data = [NSData dataWithContentsOfURL: [NSURL URLWithString:url]];
+        [self performSelectorOnMainThread:@selector(fetchJSON:) withObject:data waitUntilDone:YES];
+        
+        [refresh endRefreshing];
+    });
+    
+}
+
+- (void)share:(id)sender {
+    Title *title = [_currentFeed title];
+    NSString *text = [[NSString alloc] initWithFormat:@"These are my favorites from '%@'", [title label]];
+    
+    NSMutableArray *shareArray = [[NSMutableArray alloc] initWithCapacity:[_favorites count] + 1];
+    [shareArray addObject:text];
+    
+    for (Entry *currentEntry in _favorites)
+    {
+        [shareArray addObject:[[currentEntry id] label]];
+    }
+    
+//    NSString *text = @"How to add Facebook and Twitter sharing to an iOS app";
+//    NSURL *url = [NSURL URLWithString:@"http://roadfiresoftware.com/2014/02/how-to-add-facebook-and-twitter-sharing-to-an-ios-app/"];
+    //    UIImage *image = [UIImage imageNamed:@"roadfire-icon-square-200"];
+    
+    UIActivityViewController *controller =
+    [[UIActivityViewController alloc]
+     initWithActivityItems:shareArray
+     applicationActivities:nil];
+    
+    
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        [self presentViewController:controller animated:YES completion:nil];
+    }
+    else
+    {
+        UIView *targetView = (UIView *)[self.shareButton performSelector:@selector(view)];
+        CGRect rect = targetView.frame;
+        
+        if (![self.activityPopover isPopoverVisible])
+        {
+            self.activityPopover = [[UIPopoverController alloc] initWithContentViewController:controller];
+            [self.activityPopover presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        }
+        else
+        {
+            //Dismiss if the button is tapped while pop over is visible
+            [self.activityPopover dismissPopoverAnimated:YES];
+        }
+    }
 }
 
 @end

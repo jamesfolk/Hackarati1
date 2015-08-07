@@ -7,10 +7,14 @@
 //
 
 #import "Title.h"
+#import "Entry.h"
+#import "Feed.h"
 
 
 @implementation Title
 
 @dynamic label;
+@dynamic feed;
+@dynamic entry;
 
 @end

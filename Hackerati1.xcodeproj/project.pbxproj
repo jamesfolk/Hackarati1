@@ -18,62 +18,60 @@
 		5F7163B91B745D2100E98B3B /* Hackerati1Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7163B81B745D2100E98B3B /* Hackerati1Tests.m */; };
 		5F71642C1B746EA700E98B3B /* DefaultValues.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F71642B1B746EA700E98B3B /* DefaultValues.plist */; };
 		5F71642D1B746EA700E98B3B /* DefaultValues.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F71642B1B746EA700E98B3B /* DefaultValues.plist */; };
-		5F7167EC1B75055900E98B3B /* Updated.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7167EB1B75055900E98B3B /* Updated.m */; };
-		5F7167ED1B75055900E98B3B /* Updated.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7167EB1B75055900E98B3B /* Updated.m */; };
-		5F7167F01B75055A00E98B3B /* Rights.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7167EF1B75055A00E98B3B /* Rights.m */; };
-		5F7167F11B75055A00E98B3B /* Rights.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7167EF1B75055A00E98B3B /* Rights.m */; };
-		5F7167F41B75055A00E98B3B /* ContentTypeAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7167F31B75055A00E98B3B /* ContentTypeAttributes.m */; };
-		5F7167F51B75055A00E98B3B /* ContentTypeAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7167F31B75055A00E98B3B /* ContentTypeAttributes.m */; };
-		5F7167F81B75055A00E98B3B /* Uri.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7167F71B75055A00E98B3B /* Uri.m */; };
-		5F7167F91B75055A00E98B3B /* Uri.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7167F71B75055A00E98B3B /* Uri.m */; };
-		5F7167FC1B75055A00E98B3B /* ArtistAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7167FB1B75055A00E98B3B /* ArtistAttributes.m */; };
-		5F7167FD1B75055A00E98B3B /* ArtistAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7167FB1B75055A00E98B3B /* ArtistAttributes.m */; };
-		5F7168001B75055A00E98B3B /* Categary.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7167FF1B75055A00E98B3B /* Categary.m */; };
-		5F7168011B75055A00E98B3B /* Categary.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7167FF1B75055A00E98B3B /* Categary.m */; };
-		5F7168041B75055A00E98B3B /* CategoryAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7168031B75055A00E98B3B /* CategoryAttributes.m */; };
-		5F7168051B75055A00E98B3B /* CategoryAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7168031B75055A00E98B3B /* CategoryAttributes.m */; };
-		5F7168081B75055A00E98B3B /* Icon.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7168071B75055A00E98B3B /* Icon.m */; };
-		5F7168091B75055A00E98B3B /* Icon.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7168071B75055A00E98B3B /* Icon.m */; };
-		5F71680C1B75055B00E98B3B /* PriceAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F71680B1B75055B00E98B3B /* PriceAttributes.m */; };
-		5F71680D1B75055B00E98B3B /* PriceAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F71680B1B75055B00E98B3B /* PriceAttributes.m */; };
-		5F7168101B75055B00E98B3B /* ArchivedFeeds.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F71680F1B75055B00E98B3B /* ArchivedFeeds.m */; };
-		5F7168111B75055B00E98B3B /* ArchivedFeeds.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F71680F1B75055B00E98B3B /* ArchivedFeeds.m */; };
-		5F7168141B75055B00E98B3B /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7168131B75055B00E98B3B /* Image.m */; };
-		5F7168151B75055B00E98B3B /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7168131B75055B00E98B3B /* Image.m */; };
-		5F7168181B75055B00E98B3B /* Name.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7168171B75055B00E98B3B /* Name.m */; };
-		5F7168191B75055B00E98B3B /* Name.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7168171B75055B00E98B3B /* Name.m */; };
-		5F71681C1B75055B00E98B3B /* LinkAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F71681B1B75055B00E98B3B /* LinkAttributes.m */; };
-		5F71681D1B75055B00E98B3B /* LinkAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F71681B1B75055B00E98B3B /* LinkAttributes.m */; };
-		5F7168201B75055B00E98B3B /* ReleaseDateAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F71681F1B75055B00E98B3B /* ReleaseDateAttributes.m */; };
-		5F7168211B75055B00E98B3B /* ReleaseDateAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F71681F1B75055B00E98B3B /* ReleaseDateAttributes.m */; };
-		5F7168241B75055B00E98B3B /* Price.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7168231B75055B00E98B3B /* Price.m */; };
-		5F7168251B75055B00E98B3B /* Price.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7168231B75055B00E98B3B /* Price.m */; };
-		5F7168281B75055B00E98B3B /* Author.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7168271B75055B00E98B3B /* Author.m */; };
-		5F7168291B75055B00E98B3B /* Author.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7168271B75055B00E98B3B /* Author.m */; };
-		5F71682C1B75055C00E98B3B /* ImageAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F71682B1B75055C00E98B3B /* ImageAttributes.m */; };
-		5F71682D1B75055C00E98B3B /* ImageAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F71682B1B75055C00E98B3B /* ImageAttributes.m */; };
-		5F7168301B75055C00E98B3B /* Artist.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F71682F1B75055C00E98B3B /* Artist.m */; };
-		5F7168311B75055C00E98B3B /* Artist.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F71682F1B75055C00E98B3B /* Artist.m */; };
-		5F7168341B75055C00E98B3B /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7168331B75055C00E98B3B /* Feed.m */; };
-		5F7168351B75055C00E98B3B /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7168331B75055C00E98B3B /* Feed.m */; };
-		5F7168381B75055C00E98B3B /* Summary.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7168371B75055C00E98B3B /* Summary.m */; };
-		5F7168391B75055C00E98B3B /* Summary.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7168371B75055C00E98B3B /* Summary.m */; };
-		5F71683C1B75055C00E98B3B /* ContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F71683B1B75055C00E98B3B /* ContentType.m */; };
-		5F71683D1B75055C00E98B3B /* ContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F71683B1B75055C00E98B3B /* ContentType.m */; };
-		5F7168401B75055C00E98B3B /* Link.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F71683F1B75055C00E98B3B /* Link.m */; };
-		5F7168411B75055C00E98B3B /* Link.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F71683F1B75055C00E98B3B /* Link.m */; };
-		5F7168441B75055C00E98B3B /* IdAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7168431B75055C00E98B3B /* IdAttributes.m */; };
-		5F7168451B75055C00E98B3B /* IdAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7168431B75055C00E98B3B /* IdAttributes.m */; };
-		5F7168481B75055C00E98B3B /* ReleaseDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7168471B75055C00E98B3B /* ReleaseDate.m */; };
-		5F7168491B75055C00E98B3B /* ReleaseDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7168471B75055C00E98B3B /* ReleaseDate.m */; };
-		5F71684C1B75055D00E98B3B /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F71684B1B75055D00E98B3B /* Event.m */; };
-		5F71684D1B75055D00E98B3B /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F71684B1B75055D00E98B3B /* Event.m */; };
-		5F7168501B75055D00E98B3B /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F71684F1B75055D00E98B3B /* Entry.m */; };
-		5F7168511B75055D00E98B3B /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F71684F1B75055D00E98B3B /* Entry.m */; };
-		5F7168541B75055D00E98B3B /* Title.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7168531B75055D00E98B3B /* Title.m */; };
-		5F7168551B75055D00E98B3B /* Title.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7168531B75055D00E98B3B /* Title.m */; };
-		5F7168581B75055D00E98B3B /* Id.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7168571B75055D00E98B3B /* Id.m */; };
-		5F7168591B75055D00E98B3B /* Id.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7168571B75055D00E98B3B /* Id.m */; };
+		5F716A111B7534BA00E98B3B /* Uri.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A101B7534BA00E98B3B /* Uri.m */; };
+		5F716A121B7534BA00E98B3B /* Uri.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A101B7534BA00E98B3B /* Uri.m */; };
+		5F716A151B7534BB00E98B3B /* CategoryAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A141B7534BB00E98B3B /* CategoryAttributes.m */; };
+		5F716A161B7534BB00E98B3B /* CategoryAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A141B7534BB00E98B3B /* CategoryAttributes.m */; };
+		5F716A191B7534BB00E98B3B /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A181B7534BB00E98B3B /* Feed.m */; };
+		5F716A1A1B7534BB00E98B3B /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A181B7534BB00E98B3B /* Feed.m */; };
+		5F716A1D1B7534BB00E98B3B /* ImageAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A1C1B7534BB00E98B3B /* ImageAttributes.m */; };
+		5F716A1E1B7534BB00E98B3B /* ImageAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A1C1B7534BB00E98B3B /* ImageAttributes.m */; };
+		5F716A211B7534BB00E98B3B /* PriceAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A201B7534BB00E98B3B /* PriceAttributes.m */; };
+		5F716A221B7534BB00E98B3B /* PriceAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A201B7534BB00E98B3B /* PriceAttributes.m */; };
+		5F716A251B7534BB00E98B3B /* ReleaseDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A241B7534BB00E98B3B /* ReleaseDate.m */; };
+		5F716A261B7534BB00E98B3B /* ReleaseDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A241B7534BB00E98B3B /* ReleaseDate.m */; };
+		5F716A291B7534BB00E98B3B /* Updated.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A281B7534BB00E98B3B /* Updated.m */; };
+		5F716A2A1B7534BB00E98B3B /* Updated.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A281B7534BB00E98B3B /* Updated.m */; };
+		5F716A2D1B7534BB00E98B3B /* Favorites.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A2C1B7534BB00E98B3B /* Favorites.m */; };
+		5F716A2E1B7534BB00E98B3B /* Favorites.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A2C1B7534BB00E98B3B /* Favorites.m */; };
+		5F716A311B7534BB00E98B3B /* Categary.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A301B7534BB00E98B3B /* Categary.m */; };
+		5F716A321B7534BB00E98B3B /* Categary.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A301B7534BB00E98B3B /* Categary.m */; };
+		5F716A351B7534BB00E98B3B /* ContentTypeAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A341B7534BB00E98B3B /* ContentTypeAttributes.m */; };
+		5F716A361B7534BB00E98B3B /* ContentTypeAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A341B7534BB00E98B3B /* ContentTypeAttributes.m */; };
+		5F716A391B7534BB00E98B3B /* ReleaseDateAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A381B7534BB00E98B3B /* ReleaseDateAttributes.m */; };
+		5F716A3A1B7534BB00E98B3B /* ReleaseDateAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A381B7534BB00E98B3B /* ReleaseDateAttributes.m */; };
+		5F716A3D1B7534BB00E98B3B /* Icon.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A3C1B7534BB00E98B3B /* Icon.m */; };
+		5F716A3E1B7534BB00E98B3B /* Icon.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A3C1B7534BB00E98B3B /* Icon.m */; };
+		5F716A411B7534BB00E98B3B /* LinkAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A401B7534BB00E98B3B /* LinkAttributes.m */; };
+		5F716A421B7534BB00E98B3B /* LinkAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A401B7534BB00E98B3B /* LinkAttributes.m */; };
+		5F716A451B7534BB00E98B3B /* Summary.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A441B7534BB00E98B3B /* Summary.m */; };
+		5F716A461B7534BB00E98B3B /* Summary.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A441B7534BB00E98B3B /* Summary.m */; };
+		5F716A491B7534BB00E98B3B /* Name.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A481B7534BB00E98B3B /* Name.m */; };
+		5F716A4A1B7534BB00E98B3B /* Name.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A481B7534BB00E98B3B /* Name.m */; };
+		5F716A4D1B7534BB00E98B3B /* ArtistAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A4C1B7534BB00E98B3B /* ArtistAttributes.m */; };
+		5F716A4E1B7534BB00E98B3B /* ArtistAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A4C1B7534BB00E98B3B /* ArtistAttributes.m */; };
+		5F716A511B7534BB00E98B3B /* Rights.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A501B7534BB00E98B3B /* Rights.m */; };
+		5F716A521B7534BB00E98B3B /* Rights.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A501B7534BB00E98B3B /* Rights.m */; };
+		5F716A551B7534BB00E98B3B /* Author.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A541B7534BB00E98B3B /* Author.m */; };
+		5F716A561B7534BB00E98B3B /* Author.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A541B7534BB00E98B3B /* Author.m */; };
+		5F716A591B7534BC00E98B3B /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A581B7534BC00E98B3B /* Image.m */; };
+		5F716A5A1B7534BC00E98B3B /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A581B7534BC00E98B3B /* Image.m */; };
+		5F716A5D1B7534BC00E98B3B /* Price.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A5C1B7534BC00E98B3B /* Price.m */; };
+		5F716A5E1B7534BC00E98B3B /* Price.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A5C1B7534BC00E98B3B /* Price.m */; };
+		5F716A611B7534BC00E98B3B /* ContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A601B7534BC00E98B3B /* ContentType.m */; };
+		5F716A621B7534BC00E98B3B /* ContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A601B7534BC00E98B3B /* ContentType.m */; };
+		5F716A651B7534BC00E98B3B /* Link.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A641B7534BC00E98B3B /* Link.m */; };
+		5F716A661B7534BC00E98B3B /* Link.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A641B7534BC00E98B3B /* Link.m */; };
+		5F716A691B7534BC00E98B3B /* IdAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A681B7534BC00E98B3B /* IdAttributes.m */; };
+		5F716A6A1B7534BC00E98B3B /* IdAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A681B7534BC00E98B3B /* IdAttributes.m */; };
+		5F716A6D1B7534BC00E98B3B /* Artist.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A6C1B7534BC00E98B3B /* Artist.m */; };
+		5F716A6E1B7534BC00E98B3B /* Artist.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A6C1B7534BC00E98B3B /* Artist.m */; };
+		5F716A711B7534BC00E98B3B /* Id.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A701B7534BC00E98B3B /* Id.m */; };
+		5F716A721B7534BC00E98B3B /* Id.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A701B7534BC00E98B3B /* Id.m */; };
+		5F716A751B7534BC00E98B3B /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A741B7534BC00E98B3B /* Entry.m */; };
+		5F716A761B7534BC00E98B3B /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A741B7534BC00E98B3B /* Entry.m */; };
+		5F716A791B7534BC00E98B3B /* Title.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A781B7534BC00E98B3B /* Title.m */; };
+		5F716A7A1B7534BC00E98B3B /* Title.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F716A781B7534BC00E98B3B /* Title.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,62 +102,60 @@
 		5F7163B71B745D2100E98B3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F7163B81B745D2100E98B3B /* Hackerati1Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Hackerati1Tests.m; sourceTree = "<group>"; };
 		5F71642B1B746EA700E98B3B /* DefaultValues.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultValues.plist; sourceTree = "<group>"; };
-		5F7167EA1B75055900E98B3B /* Updated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Updated.h; sourceTree = "<group>"; };
-		5F7167EB1B75055900E98B3B /* Updated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Updated.m; sourceTree = "<group>"; };
-		5F7167EE1B75055A00E98B3B /* Rights.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rights.h; sourceTree = "<group>"; };
-		5F7167EF1B75055A00E98B3B /* Rights.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rights.m; sourceTree = "<group>"; };
-		5F7167F21B75055A00E98B3B /* ContentTypeAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentTypeAttributes.h; sourceTree = "<group>"; };
-		5F7167F31B75055A00E98B3B /* ContentTypeAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentTypeAttributes.m; sourceTree = "<group>"; };
-		5F7167F61B75055A00E98B3B /* Uri.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Uri.h; sourceTree = "<group>"; };
-		5F7167F71B75055A00E98B3B /* Uri.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Uri.m; sourceTree = "<group>"; };
-		5F7167FA1B75055A00E98B3B /* ArtistAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistAttributes.h; sourceTree = "<group>"; };
-		5F7167FB1B75055A00E98B3B /* ArtistAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistAttributes.m; sourceTree = "<group>"; };
-		5F7167FE1B75055A00E98B3B /* Categary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Categary.h; sourceTree = "<group>"; };
-		5F7167FF1B75055A00E98B3B /* Categary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Categary.m; sourceTree = "<group>"; };
-		5F7168021B75055A00E98B3B /* CategoryAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryAttributes.h; sourceTree = "<group>"; };
-		5F7168031B75055A00E98B3B /* CategoryAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryAttributes.m; sourceTree = "<group>"; };
-		5F7168061B75055A00E98B3B /* Icon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Icon.h; sourceTree = "<group>"; };
-		5F7168071B75055A00E98B3B /* Icon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Icon.m; sourceTree = "<group>"; };
-		5F71680A1B75055B00E98B3B /* PriceAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriceAttributes.h; sourceTree = "<group>"; };
-		5F71680B1B75055B00E98B3B /* PriceAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriceAttributes.m; sourceTree = "<group>"; };
-		5F71680E1B75055B00E98B3B /* ArchivedFeeds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchivedFeeds.h; sourceTree = "<group>"; };
-		5F71680F1B75055B00E98B3B /* ArchivedFeeds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchivedFeeds.m; sourceTree = "<group>"; };
-		5F7168121B75055B00E98B3B /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
-		5F7168131B75055B00E98B3B /* Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Image.m; sourceTree = "<group>"; };
-		5F7168161B75055B00E98B3B /* Name.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Name.h; sourceTree = "<group>"; };
-		5F7168171B75055B00E98B3B /* Name.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Name.m; sourceTree = "<group>"; };
-		5F71681A1B75055B00E98B3B /* LinkAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkAttributes.h; sourceTree = "<group>"; };
-		5F71681B1B75055B00E98B3B /* LinkAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkAttributes.m; sourceTree = "<group>"; };
-		5F71681E1B75055B00E98B3B /* ReleaseDateAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReleaseDateAttributes.h; sourceTree = "<group>"; };
-		5F71681F1B75055B00E98B3B /* ReleaseDateAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReleaseDateAttributes.m; sourceTree = "<group>"; };
-		5F7168221B75055B00E98B3B /* Price.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Price.h; sourceTree = "<group>"; };
-		5F7168231B75055B00E98B3B /* Price.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Price.m; sourceTree = "<group>"; };
-		5F7168261B75055B00E98B3B /* Author.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Author.h; sourceTree = "<group>"; };
-		5F7168271B75055B00E98B3B /* Author.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Author.m; sourceTree = "<group>"; };
-		5F71682A1B75055C00E98B3B /* ImageAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageAttributes.h; sourceTree = "<group>"; };
-		5F71682B1B75055C00E98B3B /* ImageAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageAttributes.m; sourceTree = "<group>"; };
-		5F71682E1B75055C00E98B3B /* Artist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Artist.h; sourceTree = "<group>"; };
-		5F71682F1B75055C00E98B3B /* Artist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Artist.m; sourceTree = "<group>"; };
-		5F7168321B75055C00E98B3B /* Feed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feed.h; sourceTree = "<group>"; };
-		5F7168331B75055C00E98B3B /* Feed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Feed.m; sourceTree = "<group>"; };
-		5F7168361B75055C00E98B3B /* Summary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Summary.h; sourceTree = "<group>"; };
-		5F7168371B75055C00E98B3B /* Summary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Summary.m; sourceTree = "<group>"; };
-		5F71683A1B75055C00E98B3B /* ContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentType.h; sourceTree = "<group>"; };
-		5F71683B1B75055C00E98B3B /* ContentType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentType.m; sourceTree = "<group>"; };
-		5F71683E1B75055C00E98B3B /* Link.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Link.h; sourceTree = "<group>"; };
-		5F71683F1B75055C00E98B3B /* Link.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Link.m; sourceTree = "<group>"; };
-		5F7168421B75055C00E98B3B /* IdAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdAttributes.h; sourceTree = "<group>"; };
-		5F7168431B75055C00E98B3B /* IdAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdAttributes.m; sourceTree = "<group>"; };
-		5F7168461B75055C00E98B3B /* ReleaseDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReleaseDate.h; sourceTree = "<group>"; };
-		5F7168471B75055C00E98B3B /* ReleaseDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReleaseDate.m; sourceTree = "<group>"; };
-		5F71684A1B75055D00E98B3B /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
-		5F71684B1B75055D00E98B3B /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
-		5F71684E1B75055D00E98B3B /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
-		5F71684F1B75055D00E98B3B /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
-		5F7168521B75055D00E98B3B /* Title.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Title.h; sourceTree = "<group>"; };
-		5F7168531B75055D00E98B3B /* Title.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Title.m; sourceTree = "<group>"; };
-		5F7168561B75055D00E98B3B /* Id.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Id.h; sourceTree = "<group>"; };
-		5F7168571B75055D00E98B3B /* Id.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Id.m; sourceTree = "<group>"; };
+		5F716A0F1B7534BA00E98B3B /* Uri.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Uri.h; sourceTree = "<group>"; };
+		5F716A101B7534BA00E98B3B /* Uri.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Uri.m; sourceTree = "<group>"; };
+		5F716A131B7534BB00E98B3B /* CategoryAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryAttributes.h; sourceTree = "<group>"; };
+		5F716A141B7534BB00E98B3B /* CategoryAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryAttributes.m; sourceTree = "<group>"; };
+		5F716A171B7534BB00E98B3B /* Feed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feed.h; sourceTree = "<group>"; };
+		5F716A181B7534BB00E98B3B /* Feed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Feed.m; sourceTree = "<group>"; };
+		5F716A1B1B7534BB00E98B3B /* ImageAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageAttributes.h; sourceTree = "<group>"; };
+		5F716A1C1B7534BB00E98B3B /* ImageAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageAttributes.m; sourceTree = "<group>"; };
+		5F716A1F1B7534BB00E98B3B /* PriceAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriceAttributes.h; sourceTree = "<group>"; };
+		5F716A201B7534BB00E98B3B /* PriceAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriceAttributes.m; sourceTree = "<group>"; };
+		5F716A231B7534BB00E98B3B /* ReleaseDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReleaseDate.h; sourceTree = "<group>"; };
+		5F716A241B7534BB00E98B3B /* ReleaseDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReleaseDate.m; sourceTree = "<group>"; };
+		5F716A271B7534BB00E98B3B /* Updated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Updated.h; sourceTree = "<group>"; };
+		5F716A281B7534BB00E98B3B /* Updated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Updated.m; sourceTree = "<group>"; };
+		5F716A2B1B7534BB00E98B3B /* Favorites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Favorites.h; sourceTree = "<group>"; };
+		5F716A2C1B7534BB00E98B3B /* Favorites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Favorites.m; sourceTree = "<group>"; };
+		5F716A2F1B7534BB00E98B3B /* Categary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Categary.h; sourceTree = "<group>"; };
+		5F716A301B7534BB00E98B3B /* Categary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Categary.m; sourceTree = "<group>"; };
+		5F716A331B7534BB00E98B3B /* ContentTypeAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentTypeAttributes.h; sourceTree = "<group>"; };
+		5F716A341B7534BB00E98B3B /* ContentTypeAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentTypeAttributes.m; sourceTree = "<group>"; };
+		5F716A371B7534BB00E98B3B /* ReleaseDateAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReleaseDateAttributes.h; sourceTree = "<group>"; };
+		5F716A381B7534BB00E98B3B /* ReleaseDateAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReleaseDateAttributes.m; sourceTree = "<group>"; };
+		5F716A3B1B7534BB00E98B3B /* Icon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Icon.h; sourceTree = "<group>"; };
+		5F716A3C1B7534BB00E98B3B /* Icon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Icon.m; sourceTree = "<group>"; };
+		5F716A3F1B7534BB00E98B3B /* LinkAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkAttributes.h; sourceTree = "<group>"; };
+		5F716A401B7534BB00E98B3B /* LinkAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkAttributes.m; sourceTree = "<group>"; };
+		5F716A431B7534BB00E98B3B /* Summary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Summary.h; sourceTree = "<group>"; };
+		5F716A441B7534BB00E98B3B /* Summary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Summary.m; sourceTree = "<group>"; };
+		5F716A471B7534BB00E98B3B /* Name.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Name.h; sourceTree = "<group>"; };
+		5F716A481B7534BB00E98B3B /* Name.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Name.m; sourceTree = "<group>"; };
+		5F716A4B1B7534BB00E98B3B /* ArtistAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistAttributes.h; sourceTree = "<group>"; };
+		5F716A4C1B7534BB00E98B3B /* ArtistAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistAttributes.m; sourceTree = "<group>"; };
+		5F716A4F1B7534BB00E98B3B /* Rights.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rights.h; sourceTree = "<group>"; };
+		5F716A501B7534BB00E98B3B /* Rights.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rights.m; sourceTree = "<group>"; };
+		5F716A531B7534BB00E98B3B /* Author.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Author.h; sourceTree = "<group>"; };
+		5F716A541B7534BB00E98B3B /* Author.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Author.m; sourceTree = "<group>"; };
+		5F716A571B7534BC00E98B3B /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
+		5F716A581B7534BC00E98B3B /* Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Image.m; sourceTree = "<group>"; };
+		5F716A5B1B7534BC00E98B3B /* Price.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Price.h; sourceTree = "<group>"; };
+		5F716A5C1B7534BC00E98B3B /* Price.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Price.m; sourceTree = "<group>"; };
+		5F716A5F1B7534BC00E98B3B /* ContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentType.h; sourceTree = "<group>"; };
+		5F716A601B7534BC00E98B3B /* ContentType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentType.m; sourceTree = "<group>"; };
+		5F716A631B7534BC00E98B3B /* Link.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Link.h; sourceTree = "<group>"; };
+		5F716A641B7534BC00E98B3B /* Link.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Link.m; sourceTree = "<group>"; };
+		5F716A671B7534BC00E98B3B /* IdAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdAttributes.h; sourceTree = "<group>"; };
+		5F716A681B7534BC00E98B3B /* IdAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdAttributes.m; sourceTree = "<group>"; };
+		5F716A6B1B7534BC00E98B3B /* Artist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Artist.h; sourceTree = "<group>"; };
+		5F716A6C1B7534BC00E98B3B /* Artist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Artist.m; sourceTree = "<group>"; };
+		5F716A6F1B7534BC00E98B3B /* Id.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Id.h; sourceTree = "<group>"; };
+		5F716A701B7534BC00E98B3B /* Id.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Id.m; sourceTree = "<group>"; };
+		5F716A731B7534BC00E98B3B /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
+		5F716A741B7534BC00E98B3B /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
+		5F716A771B7534BC00E98B3B /* Title.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Title.h; sourceTree = "<group>"; };
+		5F716A781B7534BC00E98B3B /* Title.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Title.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,62 +243,60 @@
 		5F71642A1B746E7900E98B3B /* manageObjects */ = {
 			isa = PBXGroup;
 			children = (
-				5F7167EA1B75055900E98B3B /* Updated.h */,
-				5F7167EB1B75055900E98B3B /* Updated.m */,
-				5F7167EE1B75055A00E98B3B /* Rights.h */,
-				5F7167EF1B75055A00E98B3B /* Rights.m */,
-				5F7167F21B75055A00E98B3B /* ContentTypeAttributes.h */,
-				5F7167F31B75055A00E98B3B /* ContentTypeAttributes.m */,
-				5F7167F61B75055A00E98B3B /* Uri.h */,
-				5F7167F71B75055A00E98B3B /* Uri.m */,
-				5F7167FA1B75055A00E98B3B /* ArtistAttributes.h */,
-				5F7167FB1B75055A00E98B3B /* ArtistAttributes.m */,
-				5F7167FE1B75055A00E98B3B /* Categary.h */,
-				5F7167FF1B75055A00E98B3B /* Categary.m */,
-				5F7168021B75055A00E98B3B /* CategoryAttributes.h */,
-				5F7168031B75055A00E98B3B /* CategoryAttributes.m */,
-				5F7168061B75055A00E98B3B /* Icon.h */,
-				5F7168071B75055A00E98B3B /* Icon.m */,
-				5F71680A1B75055B00E98B3B /* PriceAttributes.h */,
-				5F71680B1B75055B00E98B3B /* PriceAttributes.m */,
-				5F7168121B75055B00E98B3B /* Image.h */,
-				5F7168131B75055B00E98B3B /* Image.m */,
-				5F7168161B75055B00E98B3B /* Name.h */,
-				5F7168171B75055B00E98B3B /* Name.m */,
-				5F71681A1B75055B00E98B3B /* LinkAttributes.h */,
-				5F71681B1B75055B00E98B3B /* LinkAttributes.m */,
-				5F71681E1B75055B00E98B3B /* ReleaseDateAttributes.h */,
-				5F71681F1B75055B00E98B3B /* ReleaseDateAttributes.m */,
-				5F7168221B75055B00E98B3B /* Price.h */,
-				5F7168231B75055B00E98B3B /* Price.m */,
-				5F7168261B75055B00E98B3B /* Author.h */,
-				5F7168271B75055B00E98B3B /* Author.m */,
-				5F71682A1B75055C00E98B3B /* ImageAttributes.h */,
-				5F71682B1B75055C00E98B3B /* ImageAttributes.m */,
-				5F71682E1B75055C00E98B3B /* Artist.h */,
-				5F71682F1B75055C00E98B3B /* Artist.m */,
-				5F7168321B75055C00E98B3B /* Feed.h */,
-				5F7168331B75055C00E98B3B /* Feed.m */,
-				5F7168361B75055C00E98B3B /* Summary.h */,
-				5F7168371B75055C00E98B3B /* Summary.m */,
-				5F71683A1B75055C00E98B3B /* ContentType.h */,
-				5F71683B1B75055C00E98B3B /* ContentType.m */,
-				5F71683E1B75055C00E98B3B /* Link.h */,
-				5F71683F1B75055C00E98B3B /* Link.m */,
-				5F7168421B75055C00E98B3B /* IdAttributes.h */,
-				5F7168431B75055C00E98B3B /* IdAttributes.m */,
-				5F7168461B75055C00E98B3B /* ReleaseDate.h */,
-				5F7168471B75055C00E98B3B /* ReleaseDate.m */,
-				5F71684A1B75055D00E98B3B /* Event.h */,
-				5F71684B1B75055D00E98B3B /* Event.m */,
-				5F71684E1B75055D00E98B3B /* Entry.h */,
-				5F71684F1B75055D00E98B3B /* Entry.m */,
-				5F7168521B75055D00E98B3B /* Title.h */,
-				5F7168531B75055D00E98B3B /* Title.m */,
-				5F7168561B75055D00E98B3B /* Id.h */,
-				5F7168571B75055D00E98B3B /* Id.m */,
-				5F71680E1B75055B00E98B3B /* ArchivedFeeds.h */,
-				5F71680F1B75055B00E98B3B /* ArchivedFeeds.m */,
+				5F716A771B7534BC00E98B3B /* Title.h */,
+				5F716A781B7534BC00E98B3B /* Title.m */,
+				5F716A731B7534BC00E98B3B /* Entry.h */,
+				5F716A741B7534BC00E98B3B /* Entry.m */,
+				5F716A6F1B7534BC00E98B3B /* Id.h */,
+				5F716A701B7534BC00E98B3B /* Id.m */,
+				5F716A6B1B7534BC00E98B3B /* Artist.h */,
+				5F716A6C1B7534BC00E98B3B /* Artist.m */,
+				5F716A671B7534BC00E98B3B /* IdAttributes.h */,
+				5F716A681B7534BC00E98B3B /* IdAttributes.m */,
+				5F716A631B7534BC00E98B3B /* Link.h */,
+				5F716A641B7534BC00E98B3B /* Link.m */,
+				5F716A5F1B7534BC00E98B3B /* ContentType.h */,
+				5F716A601B7534BC00E98B3B /* ContentType.m */,
+				5F716A5B1B7534BC00E98B3B /* Price.h */,
+				5F716A5C1B7534BC00E98B3B /* Price.m */,
+				5F716A571B7534BC00E98B3B /* Image.h */,
+				5F716A581B7534BC00E98B3B /* Image.m */,
+				5F716A531B7534BB00E98B3B /* Author.h */,
+				5F716A541B7534BB00E98B3B /* Author.m */,
+				5F716A4F1B7534BB00E98B3B /* Rights.h */,
+				5F716A501B7534BB00E98B3B /* Rights.m */,
+				5F716A4B1B7534BB00E98B3B /* ArtistAttributes.h */,
+				5F716A4C1B7534BB00E98B3B /* ArtistAttributes.m */,
+				5F716A471B7534BB00E98B3B /* Name.h */,
+				5F716A481B7534BB00E98B3B /* Name.m */,
+				5F716A431B7534BB00E98B3B /* Summary.h */,
+				5F716A441B7534BB00E98B3B /* Summary.m */,
+				5F716A3F1B7534BB00E98B3B /* LinkAttributes.h */,
+				5F716A401B7534BB00E98B3B /* LinkAttributes.m */,
+				5F716A3B1B7534BB00E98B3B /* Icon.h */,
+				5F716A3C1B7534BB00E98B3B /* Icon.m */,
+				5F716A371B7534BB00E98B3B /* ReleaseDateAttributes.h */,
+				5F716A381B7534BB00E98B3B /* ReleaseDateAttributes.m */,
+				5F716A331B7534BB00E98B3B /* ContentTypeAttributes.h */,
+				5F716A341B7534BB00E98B3B /* ContentTypeAttributes.m */,
+				5F716A2F1B7534BB00E98B3B /* Categary.h */,
+				5F716A301B7534BB00E98B3B /* Categary.m */,
+				5F716A2B1B7534BB00E98B3B /* Favorites.h */,
+				5F716A2C1B7534BB00E98B3B /* Favorites.m */,
+				5F716A271B7534BB00E98B3B /* Updated.h */,
+				5F716A281B7534BB00E98B3B /* Updated.m */,
+				5F716A231B7534BB00E98B3B /* ReleaseDate.h */,
+				5F716A241B7534BB00E98B3B /* ReleaseDate.m */,
+				5F716A1F1B7534BB00E98B3B /* PriceAttributes.h */,
+				5F716A201B7534BB00E98B3B /* PriceAttributes.m */,
+				5F716A1B1B7534BB00E98B3B /* ImageAttributes.h */,
+				5F716A1C1B7534BB00E98B3B /* ImageAttributes.m */,
+				5F716A171B7534BB00E98B3B /* Feed.h */,
+				5F716A181B7534BB00E98B3B /* Feed.m */,
+				5F716A131B7534BB00E98B3B /* CategoryAttributes.h */,
+				5F716A141B7534BB00E98B3B /* CategoryAttributes.m */,
+				5F716A0F1B7534BA00E98B3B /* Uri.h */,
+				5F716A101B7534BA00E98B3B /* Uri.m */,
 			);
 			name = manageObjects;
 			sourceTree = "<group>";
@@ -409,38 +403,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F71684C1B75055D00E98B3B /* Event.m in Sources */,
-				5F7168141B75055B00E98B3B /* Image.m in Sources */,
-				5F7168501B75055D00E98B3B /* Entry.m in Sources */,
-				5F7168541B75055D00E98B3B /* Title.m in Sources */,
-				5F7168241B75055B00E98B3B /* Price.m in Sources */,
-				5F7168301B75055C00E98B3B /* Artist.m in Sources */,
-				5F7168201B75055B00E98B3B /* ReleaseDateAttributes.m in Sources */,
-				5F71681C1B75055B00E98B3B /* LinkAttributes.m in Sources */,
-				5F71680C1B75055B00E98B3B /* PriceAttributes.m in Sources */,
-				5F71683C1B75055C00E98B3B /* ContentType.m in Sources */,
-				5F7168401B75055C00E98B3B /* Link.m in Sources */,
-				5F7168381B75055C00E98B3B /* Summary.m in Sources */,
-				5F7167EC1B75055900E98B3B /* Updated.m in Sources */,
-				5F7168441B75055C00E98B3B /* IdAttributes.m in Sources */,
-				5F7168341B75055C00E98B3B /* Feed.m in Sources */,
-				5F7168081B75055A00E98B3B /* Icon.m in Sources */,
-				5F7167FC1B75055A00E98B3B /* ArtistAttributes.m in Sources */,
+				5F716A711B7534BC00E98B3B /* Id.m in Sources */,
+				5F716A111B7534BA00E98B3B /* Uri.m in Sources */,
 				5F7163A51B745D2100E98B3B /* DetailViewController.m in Sources */,
-				5F7168281B75055B00E98B3B /* Author.m in Sources */,
-				5F7168101B75055B00E98B3B /* ArchivedFeeds.m in Sources */,
-				5F7168181B75055B00E98B3B /* Name.m in Sources */,
-				5F7167F81B75055A00E98B3B /* Uri.m in Sources */,
-				5F7167F01B75055A00E98B3B /* Rights.m in Sources */,
-				5F71682C1B75055C00E98B3B /* ImageAttributes.m in Sources */,
-				5F7168041B75055A00E98B3B /* CategoryAttributes.m in Sources */,
-				5F7168001B75055A00E98B3B /* Categary.m in Sources */,
-				5F7167F41B75055A00E98B3B /* ContentTypeAttributes.m in Sources */,
+				5F716A1D1B7534BB00E98B3B /* ImageAttributes.m in Sources */,
+				5F716A791B7534BC00E98B3B /* Title.m in Sources */,
 				5F7163A21B745D2100E98B3B /* MasterViewController.m in Sources */,
+				5F716A751B7534BC00E98B3B /* Entry.m in Sources */,
+				5F716A4D1B7534BB00E98B3B /* ArtistAttributes.m in Sources */,
 				5F71639C1B745D2100E98B3B /* AppDelegate.m in Sources */,
 				5F7163991B745D2100E98B3B /* main.m in Sources */,
-				5F7168581B75055D00E98B3B /* Id.m in Sources */,
-				5F7168481B75055C00E98B3B /* ReleaseDate.m in Sources */,
+				5F716A211B7534BB00E98B3B /* PriceAttributes.m in Sources */,
+				5F716A351B7534BB00E98B3B /* ContentTypeAttributes.m in Sources */,
+				5F716A391B7534BB00E98B3B /* ReleaseDateAttributes.m in Sources */,
+				5F716A5D1B7534BC00E98B3B /* Price.m in Sources */,
+				5F716A311B7534BB00E98B3B /* Categary.m in Sources */,
+				5F716A491B7534BB00E98B3B /* Name.m in Sources */,
+				5F716A651B7534BC00E98B3B /* Link.m in Sources */,
+				5F716A611B7534BC00E98B3B /* ContentType.m in Sources */,
+				5F716A291B7534BB00E98B3B /* Updated.m in Sources */,
+				5F716A191B7534BB00E98B3B /* Feed.m in Sources */,
+				5F716A151B7534BB00E98B3B /* CategoryAttributes.m in Sources */,
+				5F716A551B7534BB00E98B3B /* Author.m in Sources */,
+				5F716A251B7534BB00E98B3B /* ReleaseDate.m in Sources */,
+				5F716A451B7534BB00E98B3B /* Summary.m in Sources */,
+				5F716A2D1B7534BB00E98B3B /* Favorites.m in Sources */,
+				5F716A3D1B7534BB00E98B3B /* Icon.m in Sources */,
+				5F716A411B7534BB00E98B3B /* LinkAttributes.m in Sources */,
+				5F716A591B7534BC00E98B3B /* Image.m in Sources */,
+				5F716A6D1B7534BC00E98B3B /* Artist.m in Sources */,
+				5F716A691B7534BC00E98B3B /* IdAttributes.m in Sources */,
+				5F716A511B7534BB00E98B3B /* Rights.m in Sources */,
 				5F71639F1B745D2100E98B3B /* Hackerati1.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,35 +442,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F71683D1B75055C00E98B3B /* ContentType.m in Sources */,
-				5F7168151B75055B00E98B3B /* Image.m in Sources */,
-				5F7168211B75055B00E98B3B /* ReleaseDateAttributes.m in Sources */,
-				5F7168291B75055B00E98B3B /* Author.m in Sources */,
-				5F7167F51B75055A00E98B3B /* ContentTypeAttributes.m in Sources */,
-				5F7168091B75055A00E98B3B /* Icon.m in Sources */,
-				5F7168451B75055C00E98B3B /* IdAttributes.m in Sources */,
-				5F7168351B75055C00E98B3B /* Feed.m in Sources */,
-				5F7168111B75055B00E98B3B /* ArchivedFeeds.m in Sources */,
-				5F7168391B75055C00E98B3B /* Summary.m in Sources */,
-				5F7168411B75055C00E98B3B /* Link.m in Sources */,
+				5F716A3E1B7534BB00E98B3B /* Icon.m in Sources */,
+				5F716A3A1B7534BB00E98B3B /* ReleaseDateAttributes.m in Sources */,
+				5F716A721B7534BC00E98B3B /* Id.m in Sources */,
+				5F716A4A1B7534BB00E98B3B /* Name.m in Sources */,
+				5F716A7A1B7534BC00E98B3B /* Title.m in Sources */,
+				5F716A121B7534BA00E98B3B /* Uri.m in Sources */,
+				5F716A1E1B7534BB00E98B3B /* ImageAttributes.m in Sources */,
+				5F716A6A1B7534BC00E98B3B /* IdAttributes.m in Sources */,
+				5F716A1A1B7534BB00E98B3B /* Feed.m in Sources */,
+				5F716A5E1B7534BC00E98B3B /* Price.m in Sources */,
+				5F716A2A1B7534BB00E98B3B /* Updated.m in Sources */,
+				5F716A6E1B7534BC00E98B3B /* Artist.m in Sources */,
+				5F716A421B7534BB00E98B3B /* LinkAttributes.m in Sources */,
+				5F716A761B7534BC00E98B3B /* Entry.m in Sources */,
+				5F716A361B7534BB00E98B3B /* ContentTypeAttributes.m in Sources */,
+				5F716A5A1B7534BC00E98B3B /* Image.m in Sources */,
+				5F716A2E1B7534BB00E98B3B /* Favorites.m in Sources */,
 				5F7163B91B745D2100E98B3B /* Hackerati1Tests.m in Sources */,
-				5F7167FD1B75055A00E98B3B /* ArtistAttributes.m in Sources */,
-				5F7168051B75055A00E98B3B /* CategoryAttributes.m in Sources */,
-				5F71682D1B75055C00E98B3B /* ImageAttributes.m in Sources */,
-				5F7167F11B75055A00E98B3B /* Rights.m in Sources */,
-				5F7168491B75055C00E98B3B /* ReleaseDate.m in Sources */,
-				5F7168251B75055B00E98B3B /* Price.m in Sources */,
-				5F7168551B75055D00E98B3B /* Title.m in Sources */,
-				5F71680D1B75055B00E98B3B /* PriceAttributes.m in Sources */,
-				5F7168511B75055D00E98B3B /* Entry.m in Sources */,
-				5F71681D1B75055B00E98B3B /* LinkAttributes.m in Sources */,
-				5F7167ED1B75055900E98B3B /* Updated.m in Sources */,
-				5F7168011B75055A00E98B3B /* Categary.m in Sources */,
-				5F7168311B75055C00E98B3B /* Artist.m in Sources */,
-				5F7167F91B75055A00E98B3B /* Uri.m in Sources */,
-				5F7168191B75055B00E98B3B /* Name.m in Sources */,
-				5F71684D1B75055D00E98B3B /* Event.m in Sources */,
-				5F7168591B75055D00E98B3B /* Id.m in Sources */,
+				5F716A261B7534BB00E98B3B /* ReleaseDate.m in Sources */,
+				5F716A561B7534BB00E98B3B /* Author.m in Sources */,
+				5F716A521B7534BB00E98B3B /* Rights.m in Sources */,
+				5F716A461B7534BB00E98B3B /* Summary.m in Sources */,
+				5F716A321B7534BB00E98B3B /* Categary.m in Sources */,
+				5F716A221B7534BB00E98B3B /* PriceAttributes.m in Sources */,
+				5F716A661B7534BC00E98B3B /* Link.m in Sources */,
+				5F716A621B7534BC00E98B3B /* ContentType.m in Sources */,
+				5F716A161B7534BB00E98B3B /* CategoryAttributes.m in Sources */,
+				5F716A4E1B7534BB00E98B3B /* ArtistAttributes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,6 +590,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Hackerati1/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -608,6 +601,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Hackerati1/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

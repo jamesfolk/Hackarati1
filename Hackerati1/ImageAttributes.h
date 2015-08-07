@@ -13,5 +13,6 @@
 @interface ImageAttributes : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * height;
+@property (nonatomic, retain) NSData * uiimage;
 
 @end

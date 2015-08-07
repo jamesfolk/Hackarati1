@@ -23,6 +23,7 @@
 
 @implementation Entry
 
+@dynamic favorite;
 @dynamic name;
 @dynamic image;
 @dynamic summary;

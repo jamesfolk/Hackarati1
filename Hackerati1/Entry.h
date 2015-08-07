@@ -13,6 +13,7 @@
 
 @interface Entry : NSManagedObject
 
+@property (nonatomic, retain) NSNumber * favorite;
 @property (nonatomic, retain) Name *name;
 @property (nonatomic, retain) NSSet *image;
 @property (nonatomic, retain) Summary *summary;

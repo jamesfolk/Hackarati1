@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Entry.h"
 
 @interface DetailViewController : UIViewController
 
-@property (strong, nonatomic) id detailItem;
+@property (strong, nonatomic) Entry *detailItem;
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+
+- (IBAction)share:(id)sender;
 
 @end
 
