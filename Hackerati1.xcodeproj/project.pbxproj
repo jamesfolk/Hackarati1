@@ -1,0 +1,456 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5F7163991B745D2100E98B3B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7163981B745D2100E98B3B /* main.m */; };
+		5F71639C1B745D2100E98B3B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F71639B1B745D2100E98B3B /* AppDelegate.m */; };
+		5F71639F1B745D2100E98B3B /* Hackerati1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5F71639D1B745D2100E98B3B /* Hackerati1.xcdatamodeld */; };
+		5F7163A21B745D2100E98B3B /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7163A11B745D2100E98B3B /* MasterViewController.m */; };
+		5F7163A51B745D2100E98B3B /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7163A41B745D2100E98B3B /* DetailViewController.m */; };
+		5F7163A81B745D2100E98B3B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F7163A61B745D2100E98B3B /* Main.storyboard */; };
+		5F7163AA1B745D2100E98B3B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F7163A91B745D2100E98B3B /* Images.xcassets */; };
+		5F7163AD1B745D2100E98B3B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F7163AB1B745D2100E98B3B /* LaunchScreen.xib */; };
+		5F7163B91B745D2100E98B3B /* Hackerati1Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7163B81B745D2100E98B3B /* Hackerati1Tests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5F7163B31B745D2100E98B3B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F71638B1B745D2100E98B3B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F7163921B745D2100E98B3B;
+			remoteInfo = Hackerati1;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5F7163931B745D2100E98B3B /* Hackerati1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hackerati1.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F7163971B745D2100E98B3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F7163981B745D2100E98B3B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5F71639A1B745D2100E98B3B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5F71639B1B745D2100E98B3B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5F71639E1B745D2100E98B3B /* Hackerati1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hackerati1.xcdatamodel; sourceTree = "<group>"; };
+		5F7163A01B745D2100E98B3B /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		5F7163A11B745D2100E98B3B /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		5F7163A31B745D2100E98B3B /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		5F7163A41B745D2100E98B3B /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		5F7163A71B745D2100E98B3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5F7163A91B745D2100E98B3B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5F7163AC1B745D2100E98B3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		5F7163B21B745D2100E98B3B /* Hackerati1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Hackerati1Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F7163B71B745D2100E98B3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F7163B81B745D2100E98B3B /* Hackerati1Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Hackerati1Tests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5F7163901B745D2100E98B3B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F7163AF1B745D2100E98B3B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5F71638A1B745D2100E98B3B = {
+			isa = PBXGroup;
+			children = (
+				5F7163951B745D2100E98B3B /* Hackerati1 */,
+				5F7163B51B745D2100E98B3B /* Hackerati1Tests */,
+				5F7163941B745D2100E98B3B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5F7163941B745D2100E98B3B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5F7163931B745D2100E98B3B /* Hackerati1.app */,
+				5F7163B21B745D2100E98B3B /* Hackerati1Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5F7163951B745D2100E98B3B /* Hackerati1 */ = {
+			isa = PBXGroup;
+			children = (
+				5F71639A1B745D2100E98B3B /* AppDelegate.h */,
+				5F71639B1B745D2100E98B3B /* AppDelegate.m */,
+				5F7163A01B745D2100E98B3B /* MasterViewController.h */,
+				5F7163A11B745D2100E98B3B /* MasterViewController.m */,
+				5F7163A31B745D2100E98B3B /* DetailViewController.h */,
+				5F7163A41B745D2100E98B3B /* DetailViewController.m */,
+				5F7163A61B745D2100E98B3B /* Main.storyboard */,
+				5F7163A91B745D2100E98B3B /* Images.xcassets */,
+				5F7163AB1B745D2100E98B3B /* LaunchScreen.xib */,
+				5F71639D1B745D2100E98B3B /* Hackerati1.xcdatamodeld */,
+				5F7163961B745D2100E98B3B /* Supporting Files */,
+			);
+			path = Hackerati1;
+			sourceTree = "<group>";
+		};
+		5F7163961B745D2100E98B3B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5F7163971B745D2100E98B3B /* Info.plist */,
+				5F7163981B745D2100E98B3B /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5F7163B51B745D2100E98B3B /* Hackerati1Tests */ = {
+			isa = PBXGroup;
+			children = (
+				5F7163B81B745D2100E98B3B /* Hackerati1Tests.m */,
+				5F7163B61B745D2100E98B3B /* Supporting Files */,
+			);
+			path = Hackerati1Tests;
+			sourceTree = "<group>";
+		};
+		5F7163B61B745D2100E98B3B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5F7163B71B745D2100E98B3B /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5F7163921B745D2100E98B3B /* Hackerati1 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F7163BC1B745D2100E98B3B /* Build configuration list for PBXNativeTarget "Hackerati1" */;
+			buildPhases = (
+				5F71638F1B745D2100E98B3B /* Sources */,
+				5F7163901B745D2100E98B3B /* Frameworks */,
+				5F7163911B745D2100E98B3B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Hackerati1;
+			productName = Hackerati1;
+			productReference = 5F7163931B745D2100E98B3B /* Hackerati1.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5F7163B11B745D2100E98B3B /* Hackerati1Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F7163BF1B745D2100E98B3B /* Build configuration list for PBXNativeTarget "Hackerati1Tests" */;
+			buildPhases = (
+				5F7163AE1B745D2100E98B3B /* Sources */,
+				5F7163AF1B745D2100E98B3B /* Frameworks */,
+				5F7163B01B745D2100E98B3B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5F7163B41B745D2100E98B3B /* PBXTargetDependency */,
+			);
+			name = Hackerati1Tests;
+			productName = Hackerati1Tests;
+			productReference = 5F7163B21B745D2100E98B3B /* Hackerati1Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5F71638B1B745D2100E98B3B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = "James Folk";
+				TargetAttributes = {
+					5F7163921B745D2100E98B3B = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					5F7163B11B745D2100E98B3B = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 5F7163921B745D2100E98B3B;
+					};
+				};
+			};
+			buildConfigurationList = 5F71638E1B745D2100E98B3B /* Build configuration list for PBXProject "Hackerati1" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5F71638A1B745D2100E98B3B;
+			productRefGroup = 5F7163941B745D2100E98B3B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5F7163921B745D2100E98B3B /* Hackerati1 */,
+				5F7163B11B745D2100E98B3B /* Hackerati1Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5F7163911B745D2100E98B3B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F7163A81B745D2100E98B3B /* Main.storyboard in Resources */,
+				5F7163AD1B745D2100E98B3B /* LaunchScreen.xib in Resources */,
+				5F7163AA1B745D2100E98B3B /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F7163B01B745D2100E98B3B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5F71638F1B745D2100E98B3B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F7163A51B745D2100E98B3B /* DetailViewController.m in Sources */,
+				5F7163A21B745D2100E98B3B /* MasterViewController.m in Sources */,
+				5F71639C1B745D2100E98B3B /* AppDelegate.m in Sources */,
+				5F7163991B745D2100E98B3B /* main.m in Sources */,
+				5F71639F1B745D2100E98B3B /* Hackerati1.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F7163AE1B745D2100E98B3B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F7163B91B745D2100E98B3B /* Hackerati1Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5F7163B41B745D2100E98B3B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F7163921B745D2100E98B3B /* Hackerati1 */;
+			targetProxy = 5F7163B31B745D2100E98B3B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5F7163A61B745D2100E98B3B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5F7163A71B745D2100E98B3B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5F7163AB1B745D2100E98B3B /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5F7163AC1B745D2100E98B3B /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5F7163BA1B745D2100E98B3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5F7163BB1B745D2100E98B3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5F7163BD1B745D2100E98B3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Hackerati1/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5F7163BE1B745D2100E98B3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Hackerati1/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		5F7163C01B745D2100E98B3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Hackerati1Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hackerati1.app/Hackerati1";
+			};
+			name = Debug;
+		};
+		5F7163C11B745D2100E98B3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Hackerati1Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hackerati1.app/Hackerati1";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5F71638E1B745D2100E98B3B /* Build configuration list for PBXProject "Hackerati1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F7163BA1B745D2100E98B3B /* Debug */,
+				5F7163BB1B745D2100E98B3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F7163BC1B745D2100E98B3B /* Build configuration list for PBXNativeTarget "Hackerati1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F7163BD1B745D2100E98B3B /* Debug */,
+				5F7163BE1B745D2100E98B3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5F7163BF1B745D2100E98B3B /* Build configuration list for PBXNativeTarget "Hackerati1Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F7163C01B745D2100E98B3B /* Debug */,
+				5F7163C11B745D2100E98B3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5F71639D1B745D2100E98B3B /* Hackerati1.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5F71639E1B745D2100E98B3B /* Hackerati1.xcdatamodel */,
+			);
+			currentVersion = 5F71639E1B745D2100E98B3B /* Hackerati1.xcdatamodel */;
+			path = Hackerati1.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 5F71638B1B745D2100E98B3B /* Project object */;
+}
