@@ -44,13 +44,15 @@
 - (void)configureView {
     
     if (_detailItem) {
-        Title *title = [_detailItem title];
-        self.title = [title label];
+//        Title *title = [_detailItem title];
+//        self.title = [title label];
+        
         
         self.entryUIImageView.image = [self getLargestImage];
         
         Name *name = [_detailItem name];
         self.entryTitle.text = [name label];
+        self.title = [name label];
         
         Rights *rights = [_detailItem rights];
         self.entryRights.text = [rights label];

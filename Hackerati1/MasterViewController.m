@@ -228,7 +228,12 @@
     [fetchRequest setEntity:entity];
     
     // Set the batch size to a suitable number.
-    [fetchRequest setFetchBatchSize:20];
+    [fetchRequest setFetchBatchSize:25];
+    
+    
+    NSPredicate *entryNotNil = [NSPredicate predicateWithFormat:@"NOT (entry == nil)"];
+    [fetchRequest setPredicate:entryNotNil];
+    
     
     // Edit the sort key as appropriate.
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"label" ascending:NO];
@@ -261,6 +266,7 @@
 - (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
            atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
 {
+    
     switch(type) {
         case NSFetchedResultsChangeInsert:
             [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
@@ -280,6 +286,8 @@
       newIndexPath:(NSIndexPath *)newIndexPath
 {
     UITableView *tableView = self.tableView;
+    Title *object = [self.fetchedResultsController objectAtIndexPath:newIndexPath];
+    Entry *entry = [object entry];
     
     switch(type) {
         case NSFetchedResultsChangeInsert:
