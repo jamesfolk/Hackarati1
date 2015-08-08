@@ -358,6 +358,12 @@
     return authorObject;
 }
 
+-(CGFloat)randomFloat
+{
+    float r = arc4random_uniform(100);
+    return r / 100.0f;
+}
+
 -(UIImage*)createEmptyImage:(CGFloat)dim
 {
     CGSize newSize = CGSizeMake(dim, dim);
@@ -366,7 +372,7 @@
     UIGraphicsBeginImageContextWithOptions(newSize, YES, 1.0);
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    CGContextSetRGBFillColor(context, 0.7, 0.7, 0.7, 1.0);
+    CGContextSetRGBFillColor(context, [self randomFloat], [self randomFloat], [self randomFloat], 1.0);
     CGContextFillRect(context, rect);
     
     UIImage *backgroundImage = UIGraphicsGetImageFromCurrentImageContext();
