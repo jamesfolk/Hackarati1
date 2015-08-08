@@ -38,6 +38,7 @@
 #include "Favorites.h"
 
 #import "ASIHTTPRequest.h"
+#import "SimpleTableCell.h"
 
 @interface MasterViewController ()
 
@@ -157,6 +158,11 @@
 
 #pragma mark - Table View
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 80;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [[self.fetchedResultsController sections] count];
 }
@@ -167,7 +173,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SimpleTableCell" forIndexPath:indexPath];
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
@@ -193,9 +199,19 @@
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-//    cell.textLabel.text = [[object valueForKey:@"timeStamp"] description];
-    cell.textLabel.text = [[object valueForKey:@"label"] description];
+    Title *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    Entry *entry = [object entry];
+    
+    SimpleTableCell *stCell = (SimpleTableCell*)cell;
+    stCell.titleLabel.text = [[entry title] label];
+    
+    NSArray *images = [[entry image] allObjects];
+    Image *img = [images objectAtIndex:0];
+    [img.attributes uiimage];
+    
+    NSData *data = [[img attributes] uiimage];
+    stCell.imageView.image = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    
 }
 
 #pragma mark - Fetched results controller

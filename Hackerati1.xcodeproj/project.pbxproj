@@ -87,6 +87,8 @@
 		5F7B54E71B7574050066E835 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F7B54E61B7574050066E835 /* SystemConfiguration.framework */; };
 		5F7B54E91B75740E0066E835 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F7B54E81B75740E0066E835 /* MobileCoreServices.framework */; };
 		5F7B54EB1B7577F20066E835 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F7B54EA1B7577F20066E835 /* libz.dylib */; };
+		5F7B54F11B7589590066E835 /* SimpleTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7B54F01B7589590066E835 /* SimpleTableCell.m */; };
+		5F7B54F21B7589590066E835 /* SimpleTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7B54F01B7589590066E835 /* SimpleTableCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -198,6 +200,8 @@
 		5F7B54E61B7574050066E835 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5F7B54E81B75740E0066E835 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		5F7B54EA1B7577F20066E835 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		5F7B54EF1B7589590066E835 /* SimpleTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleTableCell.h; sourceTree = "<group>"; };
+		5F7B54F01B7589590066E835 /* SimpleTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleTableCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,6 +264,8 @@
 				5F7163AB1B745D2100E98B3B /* LaunchScreen.xib */,
 				5F71639D1B745D2100E98B3B /* Hackerati1.xcdatamodeld */,
 				5F7163961B745D2100E98B3B /* Supporting Files */,
+				5F7B54EF1B7589590066E835 /* SimpleTableCell.h */,
+				5F7B54F01B7589590066E835 /* SimpleTableCell.m */,
 			);
 			path = Hackerati1;
 			sourceTree = "<group>";
@@ -500,6 +506,7 @@
 				5F7B54D91B7573AF0066E835 /* ASIAuthenticationDialog.m in Sources */,
 				5F716AA41B755B6D00E98B3B /* Updated.m in Sources */,
 				5F716AE41B755B6E00E98B3B /* ArtistAttributes.m in Sources */,
+				5F7B54F11B7589590066E835 /* SimpleTableCell.m in Sources */,
 				5F7B54DF1B7573AF0066E835 /* ASIInputStream.m in Sources */,
 				5F7B54DC1B7573AF0066E835 /* ASIDownloadCache.m in Sources */,
 				5F716AC01B755B6D00E98B3B /* Id.m in Sources */,
@@ -555,6 +562,7 @@
 				5F716AD11B755B6E00E98B3B /* Entry.m in Sources */,
 				5F716A951B755B6C00E98B3B /* PriceAttributes.m in Sources */,
 				5F716AA51B755B6D00E98B3B /* Updated.m in Sources */,
+				5F7B54F21B7589590066E835 /* SimpleTableCell.m in Sources */,
 				5F716A891B755B6C00E98B3B /* ImageAttributes.m in Sources */,
 				5F716A9D1B755B6C00E98B3B /* Categary.m in Sources */,
 				5F716A851B755B6B00E98B3B /* LinkAttributes.m in Sources */,

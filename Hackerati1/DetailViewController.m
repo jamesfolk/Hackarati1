@@ -22,7 +22,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *entryUIImageView;
 @property (weak, nonatomic) IBOutlet UILabel *entryTitle;
 @property (weak, nonatomic) IBOutlet UILabel *entryRights;
-@property (weak, nonatomic) IBOutlet UISwitch *entryFavorite;
+//@property (weak, nonatomic) IBOutlet UISwitch *entryFavorite;
+@property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 @property (weak, nonatomic) IBOutlet UITextView *entrySummary;
 
 @end
@@ -58,7 +59,8 @@
         [self.entrySummary setText:[summary label]];
         
         BOOL isFavorite = [[_detailItem favorite] boolValue];
-        [self.entryFavorite setOn:isFavorite];
+        self.favoriteButton.selected = isFavorite;
+//        [self.entryFavorite setOn:isFavorite];
     }
 }
 
@@ -66,6 +68,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [self configureView];
+    
+    [_favoriteButton setImage:[UIImage imageNamed:@"favoriteOn"] forState:UIControlStateSelected];
+    [_favoriteButton setImage:[UIImage imageNamed:@"favoriteOff"] forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -148,25 +153,13 @@
         }
     }
 }
-- (IBAction)switchChanged:(id)sender
+
+- (IBAction)favoriteTouched:(id)sender
 {
-    if(self.entryFavorite.on){
-        [_detailItem setFavorite:[NSNumber numberWithBool:YES]];
-        //Add it to Favorites.
-        NSLog(@"Switch State is Enabled");
-    }else{
-        [_detailItem setFavorite:[NSNumber numberWithBool:NO]];
-        //Remove it from favorites.
-        NSLog(@"Switch State is Disabled");
-    }
+    UIButton *button = sender;
+    button.selected = !button.selected;
     
-//    NSError *error = nil;
-//    if (![_context save:&error]) {
-//        // Replace this implementation with code to handle the error appropriately.
-//        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-//        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-//        abort();
-//    }
+    [_detailItem setFavorite:[NSNumber numberWithBool:button.selected]];
 }
 
 @end
