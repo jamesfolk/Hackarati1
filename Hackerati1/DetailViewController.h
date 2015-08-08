@@ -12,7 +12,7 @@
 @interface DetailViewController : UIViewController
 
 @property (strong, nonatomic) Entry *detailItem;
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+@property (strong, nonatomic) NSManagedObjectContext *context;
 
 - (IBAction)share:(id)sender;
 

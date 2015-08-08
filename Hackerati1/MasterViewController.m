@@ -35,11 +35,13 @@
 #import "Icon.h"
 #import "ContentType.h"
 #import "Categary.h"
+#include "Favorites.h"
+
+#import "ASIHTTPRequest.h"
 
 @interface MasterViewController ()
 
 @property (strong, nonatomic) Feed *currentFeed;
-@property (strong, nonatomic) NSArray *favorites;
 
 @property (strong, nonatomic) UIBarButtonItem *shareButton;
 @property (strong, nonatomic) UIPopoverController *activityPopover;
@@ -56,14 +58,21 @@
     }
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self updateFavorites];
+    
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-//    self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
+    
     self.shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(share:)];
     self.navigationItem.rightBarButtonItem = self.shareButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    self.detailViewController.context = [self.fetchedResultsController managedObjectContext];
     
     
     //Load the default file...
@@ -107,13 +116,6 @@
     {
         self.title = @"Updating...";
     }
-    
-    fetchRequest = [[NSFetchRequest alloc] init];
-    entity = [NSEntityDescription entityForName:@"Favorites" inManagedObjectContext:context];
-    [fetchRequest setEntity:entity];
-    
-    _favorites = [context executeFetchRequest:fetchRequest error:&error];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -391,9 +393,31 @@
                 NSNumber *theHeight = [f numberFromString:height];
                 [imageAttributesObject setHeight:theHeight];
                 
-                UIImage *img = [self createEmptyImage:[theHeight floatValue]];
+                __block UIImage *img = [self createEmptyImage:[theHeight floatValue]];
                 NSData *imgData=[NSKeyedArchiver archivedDataWithRootObject:img];
                 [imageAttributesObject setUiimage:imgData];
+                
+                NSSet *s;
+                
+                NSURL *sourceURL = [NSURL URLWithString:[imageObject label]];
+                __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:sourceURL];
+                [request setCompletionBlock:^{
+                    NSData *data = [request responseData];
+                    img = [[UIImage alloc] initWithData:data];
+                    NSData *imgData=[NSKeyedArchiver archivedDataWithRootObject:img];
+                    [imageAttributesObject setUiimage:imgData];
+                    
+                    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+                    NSError *error;
+                    if (![context save:&error]) {
+                        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+                    }
+                }];
+                [request setFailedBlock:^{
+                    NSError *error = [request error];
+                    NSLog(@"Error downloading image: %@", error.localizedDescription);
+                }];
+                [request startAsynchronous];
             }
             [imageObject setAttributes:imageAttributesObject];
             
@@ -588,9 +612,10 @@
         [releaseDateObject setAttributes:releaseDateAttributesObject];
         [entryObject setReleaseDate:releaseDateObject];
         
-        
+        Favorites *favoriteObject = [self fetchFavorites];
+        NSSet *favorites = [favoriteObject entries];
         [entryObject setFavorite:[NSNumber numberWithBool:NO]];
-        for (Entry *favoriteEntry in _favorites)
+        for (Entry *favoriteEntry in favorites)
         {
             if ([entryObject isEqual:favoriteEntry])
             {
@@ -837,17 +862,18 @@
     Title *title = [_currentFeed title];
     NSString *text = [[NSString alloc] initWithFormat:@"These are my favorites from '%@'", [title label]];
     
-    NSMutableArray *shareArray = [[NSMutableArray alloc] initWithCapacity:[_favorites count] + 1];
+    Favorites *favoriteObject = [self fetchFavorites];
+    
+    NSSet *favorites = [favoriteObject entries];
+    
+    NSMutableArray *shareArray = [[NSMutableArray alloc] initWithCapacity:[favorites count] + 1];
     [shareArray addObject:text];
     
-    for (Entry *currentEntry in _favorites)
+    for (Entry *currentEntry in favorites)
     {
         [shareArray addObject:[[currentEntry id] label]];
     }
     
-//    NSString *text = @"How to add Facebook and Twitter sharing to an iOS app";
-//    NSURL *url = [NSURL URLWithString:@"http://roadfiresoftware.com/2014/02/how-to-add-facebook-and-twitter-sharing-to-an-ios-app/"];
-    //    UIImage *image = [UIImage imageNamed:@"roadfire-icon-square-200"];
     
     UIActivityViewController *controller =
     [[UIActivityViewController alloc]
@@ -875,6 +901,69 @@
             //Dismiss if the button is tapped while pop over is visible
             [self.activityPopover dismissPopoverAnimated:YES];
         }
+    }
+}
+
+-(Favorites*)fetchFavorites
+{
+    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Favorites" inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error = nil;
+    NSArray *favorites = [context executeFetchRequest:fetchRequest error:&error];
+    if([favorites count] == 0)
+    {
+        Favorites *f = [NSEntityDescription insertNewObjectForEntityForName:@"Favorites" inManagedObjectContext:context];
+        [f setEntries:[[NSSet alloc] init]];
+        
+        NSError *error = nil;
+        if (![context save:&error]) {
+            // Replace this implementation with code to handle the error appropriately.
+            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+        
+        
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Favorites" inManagedObjectContext:context];
+        [fetchRequest setEntity:entity];
+        favorites = [context executeFetchRequest:fetchRequest error:&error];
+    }
+    Favorites *favoriteObject = [favorites objectAtIndex:0];
+    return favoriteObject;
+}
+
+-(void)updateFavorites
+{
+    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Entry" inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error = nil;
+    NSArray *entries = [context executeFetchRequest:fetchRequest error:&error];
+    NSMutableSet *favoriteSet = [[NSMutableSet alloc] initWithCapacity:[entries count]];
+    
+    for (Entry *entry in entries)
+    {
+        if ([[entry favorite] boolValue])
+        {
+            [favoriteSet addObject:entry];
+        }
+    }
+    
+    Favorites *favoriteObject = [self fetchFavorites];
+    [favoriteObject setEntries:favoriteSet];
+    if (![context save:&error]) {
+        // Replace this implementation with code to handle the error appropriately.
+        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
     }
 }
 

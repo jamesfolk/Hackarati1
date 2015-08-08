@@ -19,11 +19,10 @@
 
 @property (strong, nonatomic) UIPopoverController *activityPopover;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *shareButton;
-
 @property (weak, nonatomic) IBOutlet UIImageView *entryUIImageView;
-
 @property (weak, nonatomic) IBOutlet UILabel *entryTitle;
-@property (weak, nonatomic) IBOutlet UILabel *entryPrice;
+@property (weak, nonatomic) IBOutlet UILabel *entryRights;
+@property (weak, nonatomic) IBOutlet UISwitch *entryFavorite;
 @property (weak, nonatomic) IBOutlet UITextView *entrySummary;
 
 @end
@@ -42,13 +41,10 @@
 }
 
 - (void)configureView {
-    // Update the user interface for the detail item.
     
-    if (self.detailItem) {
+    if (_detailItem) {
         Title *title = [_detailItem title];
         self.title = [title label];
-        self.detailDescriptionLabel.text = [[_detailItem summary] label];
-        NSSet *images = [_detailItem image];
         
         self.entryUIImageView.image = [self getLargestImage];
         
@@ -56,10 +52,13 @@
         self.entryTitle.text = [name label];
         
         Rights *rights = [_detailItem rights];
-        self.entryPrice.text = [rights label];
+        self.entryRights.text = [rights label];
         
         Summary *summary = [_detailItem summary];
-        self.entrySummary.text = [summary label];
+        [self.entrySummary setText:[summary label]];
+        
+        BOOL isFavorite = [[_detailItem favorite] boolValue];
+        [self.entryFavorite setOn:isFavorite];
     }
 }
 
@@ -148,6 +147,26 @@
             [self.activityPopover dismissPopoverAnimated:YES];
         }
     }
+}
+- (IBAction)switchChanged:(id)sender
+{
+    if(self.entryFavorite.on){
+        [_detailItem setFavorite:[NSNumber numberWithBool:YES]];
+        //Add it to Favorites.
+        NSLog(@"Switch State is Enabled");
+    }else{
+        [_detailItem setFavorite:[NSNumber numberWithBool:NO]];
+        //Remove it from favorites.
+        NSLog(@"Switch State is Disabled");
+    }
+    
+//    NSError *error = nil;
+//    if (![_context save:&error]) {
+//        // Replace this implementation with code to handle the error appropriately.
+//        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+//        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+//        abort();
+//    }
 }
 
 @end

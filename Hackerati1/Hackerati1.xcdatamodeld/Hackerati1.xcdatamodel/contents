@@ -118,32 +118,32 @@
         <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Updated" positionX="52" positionY="-27" width="128" height="58"/>
-        <element name="Entry" positionX="-155" positionY="-376" width="128" height="238"/>
-        <element name="Author" positionX="-11" positionY="-460" width="128" height="73"/>
-        <element name="Icon" positionX="-288" positionY="-189" width="128" height="58"/>
-        <element name="Rights" positionX="333" positionY="-189" width="128" height="58"/>
-        <element name="Title" positionX="718" positionY="-40" width="128" height="88"/>
-        <element name="Feed" positionX="162" positionY="-306" width="128" height="163"/>
-        <element name="Link" positionX="315" positionY="-288" width="128" height="58"/>
-        <element name="Id" positionX="-54" positionY="-144" width="128" height="73"/>
-        <element name="Name" positionX="268" positionY="-562" width="128" height="58"/>
-        <element name="Uri" positionX="133" positionY="-562" width="128" height="58"/>
-        <element name="LinkAttributes" positionX="295" positionY="-432" width="128" height="88"/>
-        <element name="Image" positionX="-153" positionY="-522" width="128" height="73"/>
-        <element name="ImageAttributes" positionX="-9" positionY="-562" width="128" height="73"/>
-        <element name="Summary" positionX="-180" positionY="-585" width="128" height="58"/>
-        <element name="Price" positionX="-207" positionY="-63" width="128" height="73"/>
-        <element name="PriceAttributes" positionX="-72" positionY="-54" width="128" height="73"/>
-        <element name="ContentType" positionX="-191" positionY="45" width="128" height="58"/>
-        <element name="ContentTypeAttributes" positionX="-45" positionY="54" width="128" height="73"/>
-        <element name="IdAttributes" positionX="180" positionY="81" width="128" height="73"/>
         <element name="Artist" positionX="306" positionY="20" width="128" height="73"/>
         <element name="ArtistAttributes" positionX="351" positionY="126" width="128" height="58"/>
+        <element name="Author" positionX="-11" positionY="-460" width="128" height="73"/>
         <element name="Categary" positionX="-279" positionY="149" width="128" height="58"/>
         <element name="CategoryAttributes" positionX="-38" positionY="189" width="128" height="103"/>
+        <element name="ContentType" positionX="-191" positionY="45" width="128" height="58"/>
+        <element name="ContentTypeAttributes" positionX="-45" positionY="54" width="128" height="73"/>
+        <element name="Entry" positionX="-155" positionY="-376" width="128" height="238"/>
+        <element name="Favorites" positionX="-387" positionY="-504" width="128" height="58"/>
+        <element name="Feed" positionX="162" positionY="-306" width="128" height="163"/>
+        <element name="Icon" positionX="-288" positionY="-189" width="128" height="58"/>
+        <element name="Id" positionX="-54" positionY="-144" width="128" height="73"/>
+        <element name="IdAttributes" positionX="180" positionY="81" width="128" height="73"/>
+        <element name="Image" positionX="-153" positionY="-522" width="128" height="73"/>
+        <element name="ImageAttributes" positionX="-9" positionY="-562" width="128" height="73"/>
+        <element name="Link" positionX="315" positionY="-288" width="128" height="58"/>
+        <element name="LinkAttributes" positionX="295" positionY="-432" width="128" height="88"/>
+        <element name="Name" positionX="268" positionY="-562" width="128" height="58"/>
+        <element name="Price" positionX="-207" positionY="-63" width="128" height="73"/>
+        <element name="PriceAttributes" positionX="-72" positionY="-54" width="128" height="73"/>
         <element name="ReleaseDate" positionX="79" positionY="182" width="128" height="73"/>
         <element name="ReleaseDateAttributes" positionX="268" positionY="191" width="128" height="58"/>
-        <element name="Favorites" positionX="-333" positionY="-486" width="128" height="58"/>
+        <element name="Rights" positionX="333" positionY="-189" width="128" height="58"/>
+        <element name="Summary" positionX="-180" positionY="-585" width="128" height="58"/>
+        <element name="Title" positionX="718" positionY="-40" width="128" height="88"/>
+        <element name="Updated" positionX="52" positionY="-27" width="128" height="58"/>
+        <element name="Uri" positionX="133" positionY="-562" width="128" height="58"/>
     </elements>
 </model>
