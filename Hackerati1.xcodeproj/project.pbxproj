@@ -202,6 +202,7 @@
 		5F7B54EA1B7577F20066E835 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		5F7B54EF1B7589590066E835 /* SimpleTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleTableCell.h; sourceTree = "<group>"; };
 		5F7B54F01B7589590066E835 /* SimpleTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleTableCell.m; sourceTree = "<group>"; };
+		5FD28EB31B79105500B9292C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +274,7 @@
 		5F7163961B745D2100E98B3B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5FD28EB31B79105500B9292C /* README.md */,
 				5F7163971B745D2100E98B3B /* Info.plist */,
 				5F7163981B745D2100E98B3B /* main.m */,
 				5F71642B1B746EA700E98B3B /* DefaultValues.plist */,
