@@ -19,4 +19,5 @@ Added features...
 2. Full CoreData Database layout of all the json arrays and dictionaries.
 3. Cross platform.
 4. Share your favorites and the detail of each of the itmes using UIActivityViewController
+5. Generate an empty image.
 
