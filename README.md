@@ -14,6 +14,7 @@ Other parameters:
 * Use the latest available iOS SDK and set the deployment target to 7.0
 
 Added features...
+
 1. Pull down to reload using UIRefreshControl
 2. Full CoreData Database layout of all the json arrays and dictionaries.
 3. Cross platform.
