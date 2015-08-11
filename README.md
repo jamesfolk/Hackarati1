@@ -20,4 +20,5 @@ Added features...
 3. Cross platform.
 4. Share your favorites and the detail of each of the itmes using UIActivityViewController
 5. Generate an empty image.
+6. Load the app's icon images asynchronously.
 
